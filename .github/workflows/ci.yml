@@ -18,4 +18,7 @@ jobs:
       
       - name: Check Java Version
         run: java -version
+
+      - name: Check Maven Version
+        run: mvn -version
       
