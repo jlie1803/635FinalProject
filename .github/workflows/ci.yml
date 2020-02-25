@@ -17,5 +17,5 @@ jobs:
           architecture: x64
       
       - name: Check Java Version
-        run: java --version
+        run: java -version
       
