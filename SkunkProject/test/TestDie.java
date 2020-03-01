@@ -71,4 +71,15 @@ public class TestDie
 		assertTrue(six_count >= rolls/min_threshold_divisor, "Six was less than the expected rolls.");
 		assertTrue(six_count <= rolls/max_threshold_divisor, "Six was greater than the expected rolls.");
 	}
+	
+	@Test
+	public void die_returns_expected_value_when_replaced_with_mock_die() {
+		for (int i = 0; i < rolls; i++)
+		{
+			Die die = new MockDie(1);
+			die.roll();
+			assertEquals(1, die.getLastRoll());
+			assertEquals("Die: " + 1, die.toString());
+		}
+	}
 }
