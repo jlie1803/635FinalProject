@@ -16,8 +16,8 @@ jobs:
           java-package: jdk
           architecture: x64
       
-      - name: Check Java Version
-        run: java -version
+      - name: Install Eclipse
+        run: sudo snap install --classic eclipse
 
       - name: Check Maven Version
         run: mvn test
