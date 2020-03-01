@@ -21,7 +21,7 @@ jobs:
 
       - name: Run Unit Tests
         run: |
-          /usr/lib/jvm/java-8-openjdk-amd64/bin/java \
+          java \
             -ea -Dfile.encoding=ISO-8859-1 \
             -classpath /opt/data/tp_1_skunk/SkunkProject/bin:/opt/data/tp_1_skunk/SkunkProject/lib/stdlib-package.jar:/snap/eclipse/40/plugins/org.junit.jupiter.api_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.jupiter.engine_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.jupiter.migrationsupport_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.jupiter.params_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.commons_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.engine_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.launcher_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.runner_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.suite.api_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.vintage.engine_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.opentest4j_1.1.1.v20190212-2109.jar:/snap/eclipse/40/plugins/org.apiguardian_1.0.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit_4.12.0.v201504281640/junit.jar:/snap/eclipse/40/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar \
             org.eclipse.jdt.internal.junit.runner.RemoteTestRunner \
