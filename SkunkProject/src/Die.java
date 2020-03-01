@@ -1,7 +1,7 @@
 
 public class Die
 {
-	private int lastRoll;
+	protected int lastRoll;
 
 	public Die()
 	{
