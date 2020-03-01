@@ -17,9 +17,9 @@ jobs:
           architecture: x64
       
       - name: Build Classes
-        run: build.sh
+        run: ./build.sh
  
       - name: Run Unit Tests
-        run: run-tests.sh
+        run: ./run-tests.sh
             
 
