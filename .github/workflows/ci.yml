@@ -16,24 +16,10 @@ jobs:
           java-package: jdk
           architecture: x64
       
-      - name: Install Eclipse
-        run: sudo snap install --classic eclipse
-
       - name: Build Classes
-        run: |
-          mkdir -p cp
-          javac SkunkProject/src/*.java -classpath SkunkProject/lib/stdlib.jar:SkunkProject/lib/stdlib-package.jar -d cp
-          javac SkunkProject/test/*.java -classpath cp:SkunkProject/lib/stdlib.jar:SkunkProject/lib/stdlib-package.jar:/snap/eclipse/40/plugins/org.junit.jupiter.api_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.jupiter.engine_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.jupiter.migrationsupport_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.jupiter.params_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.commons_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.engine_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.launcher_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.runner_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.suite.api_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.vintage.engine_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.opentest4j_1.1.1.v20190212-2109.jar:/snap/eclipse/40/plugins/org.apiguardian_1.0.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit_4.12.0.v201504281640/junit.jar:/snap/eclipse/40/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar -d cp
+        run: build.sh
  
       - name: Run Unit Tests
-        run: |
-          java \
-            -ea -Dfile.encoding=ISO-8859-1 \
-            -classpath cp:SkunkProject/lib/stdlib-package.jar:/snap/eclipse/40/plugins/org.junit.jupiter.api_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.jupiter.engine_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.jupiter.migrationsupport_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.jupiter.params_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.commons_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.engine_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.launcher_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.runner_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.platform.suite.api_1.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit.vintage.engine_5.4.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.opentest4j_1.1.1.v20190212-2109.jar:/snap/eclipse/40/plugins/org.apiguardian_1.0.0.v20190212-2109.jar:/snap/eclipse/40/plugins/org.junit_4.12.0.v201504281640/junit.jar:/snap/eclipse/40/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar \
-            org.eclipse.jdt.internal.junit.runner.RemoteTestRunner \
-            -version 3 \
-            -port 44743 \
-            -testLoaderClass org.eclipse.jdt.internal.junit5.runner.JUnit5TestLoader \
-            -loaderpluginname org.eclipse.jdt.junit5.runtime \
-            -packageNameFile /tmp/packageNames423573793926943067.txt
+        run: run-tests.sh
+            
 
