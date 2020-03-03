@@ -95,5 +95,20 @@ class TestDice {
 		assertTrue(twelve_count >= 0, "Twelve was less than the expected rolls.");
 		assertTrue(twelve_count <= rolls/36*2, "Twelve was greater than the expected rolls.");
 	}
-
+	
+	@Test
+	public void when_initialized_with_two_mocked_dice_expected_roll_is_returned()
+	{
+		for (int i=1; i<=6; i++)
+		{
+			for (int j=1; j<=6; j++)
+			{
+				MockDie mockDie1 = new MockDie(i);
+				MockDie mockDie2 = new MockDie(j);
+			    Dice mockDice = new Dice(mockDie1, mockDie2);		
+				mockDice.roll();
+				assertEquals(i+j, mockDice.getLastRoll());
+			}
+		}			
+	}
 }

@@ -1,3 +1,4 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MockDie extends Die {
 
@@ -11,6 +12,6 @@ public class MockDie extends Die {
 	@Override
 	public void roll() {
 		this.lastRoll = this.expectedRoll;
-	}
+	}	
 
 }
