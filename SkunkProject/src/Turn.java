@@ -6,7 +6,7 @@ public class Turn {
 	}
 
 	public int getScore() {
-		return -1;
+		return 0;
 	}
 
 	public void roll() {
