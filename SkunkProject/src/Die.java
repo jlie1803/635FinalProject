@@ -5,7 +5,7 @@ public class Die
 
 	public Die()
 	{
-		this.roll();
+		this.lastRoll = (int) (Math.random() * 6 + 1);
 	}
 
 	public int getLastRoll() // getter or accessor method

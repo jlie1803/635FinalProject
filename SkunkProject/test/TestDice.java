@@ -103,8 +103,8 @@ class TestDice {
 		{
 			for (int j=1; j<=6; j++)
 			{
-				MockDie mockDie1 = new MockDie(i);
-				MockDie mockDie2 = new MockDie(j);
+				Die mockDie1 = new MockDie(i);
+				Die mockDie2 = new MockDie(j);
 			    Dice mockDice = new Dice(mockDie1, mockDie2);		
 				mockDice.roll();
 				assertEquals(i+j, mockDice.getLastRoll());
