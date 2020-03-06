@@ -1,16 +1,24 @@
 
 public class Turn {
 
+	private Dice dice;
+	private int score;
+	
+	public Turn() {
+		dice = new Dice();
+		score = 0;
+	}
+	
 	public Turn(Dice dice) {
-		// TODO Auto-generated constructor stub
+		this.dice = dice;
 	}
 
 	public int getScore() {
-		return 0;
+		return score;
 	}
 
 	public void roll() {
-		// TODO Auto-generated method stub
-		
+		dice.roll();
+		this.score += dice.getLastRoll();		
 	}
 }
