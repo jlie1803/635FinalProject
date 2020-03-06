@@ -89,4 +89,4 @@ git branch -d 'branch-name'
 
 ## Finite State Diagram
 
-![FSD for Skunk game](.img/fsd.jpg)
+![FSD for Skunk game](.img/fsd.png)
