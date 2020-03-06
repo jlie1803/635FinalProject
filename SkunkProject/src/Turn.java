@@ -3,15 +3,19 @@ public class Turn {
 
 	private Dice dice;
 	private int score;
+	private boolean skunked;
 	
 	public Turn() {
-		dice = new Dice();
-		score = 0;
+		this.dice = new Dice();
+		this.score = 0;
+		this.skunked = false;
 		this.roll();
 	}
 	
 	public Turn(Dice dice) {
 		this.dice = dice;
+		this.score = 0;
+		this.skunked = false;
 		this.roll();
 	}
 
@@ -20,8 +24,10 @@ public class Turn {
 	}
 
 	public void roll() {
+		if (this.skunked) return;
 		this.score += dice.getLastRoll();
-		if (dice.hasSkunk())
+		this.skunked = dice.hasSkunk();
+		if (this.skunked)
 		{
 			this.score = 0;
 		}
