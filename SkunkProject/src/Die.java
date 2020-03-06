@@ -5,7 +5,7 @@ public class Die
 
 	public Die()
 	{
-		this.lastRoll = (int) (Math.random() * 6 + 1);
+		this.init();
 	}
 
 	public int getLastRoll() // getter or accessor method
@@ -14,6 +14,10 @@ public class Die
 		return this.lastRoll;
 	}
 
+	protected void init()
+	{
+		this.roll();
+	}
 	public void roll() // note how this changes Die's state, but doesn't return
 						// anything
 	{

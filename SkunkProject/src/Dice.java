@@ -36,6 +36,7 @@ public class Dice
 	{
 		this.die1 = die1;
 		this.die2 = die2;
+		this.lastRoll = this.die1.getLastRoll() + this.die2.getLastRoll();
 	}
 
 	// Instance methods can also be declared anywhere in body of class
@@ -44,6 +45,12 @@ public class Dice
 	public int getLastRoll()
 	{
 		return this.lastRoll;
+	}
+	
+	public boolean hasSkunk() {
+		if (die1.getLastRoll() == 1) return true;
+		if (die2.getLastRoll() == 1) return true;
+		return false;
 	}
 
 	public void roll()

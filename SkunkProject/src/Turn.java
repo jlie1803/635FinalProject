@@ -7,10 +7,12 @@ public class Turn {
 	public Turn() {
 		dice = new Dice();
 		score = 0;
+		this.roll();
 	}
 	
 	public Turn(Dice dice) {
 		this.dice = dice;
+		this.roll();
 	}
 
 	public int getScore() {
@@ -18,7 +20,11 @@ public class Turn {
 	}
 
 	public void roll() {
+		this.score += dice.getLastRoll();
+		if (dice.hasSkunk())
+		{
+			this.score = 0;
+		}
 		dice.roll();
-		this.score += dice.getLastRoll();		
 	}
 }
