@@ -7,20 +7,23 @@ public class MockDie extends Die {
 	
 	public MockDie(int i) {
 		this.expectedRoll = new int[] {i};
-		this.rollIndex = 0;
+		this.rollIndex = -1;
 		this.roll();
 	}
 	
 	public MockDie(int[] rolls) {
-		this.rollIndex = 0;
+		this.rollIndex = -1;
 		this.expectedRoll = rolls;
 		this.roll();
 	}
+	
+	@Override
+	public void init() {}
 
 	@Override
 	public void roll() {
-		this.lastRoll = this.expectedRoll[this.rollIndex];
 		this.rollIndex = (this.rollIndex + 1) % this.expectedRoll.length;
+		this.lastRoll = this.expectedRoll[this.rollIndex];
 	}	
 
 }

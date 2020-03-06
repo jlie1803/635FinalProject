@@ -86,3 +86,7 @@ If you would like to delete your local branch after deleting the remote branch, 
 ```bash
 git branch -d 'branch-name'
 ```
+
+## Finite State Diagram
+
+![FSD for Skunk game](.img/fsd.jpg)
