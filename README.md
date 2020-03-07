@@ -5,6 +5,7 @@ Collaborators:
 
 - Esten Rye
 - Jie Li
+- Fadi BChara
 
 # Contributor Workflow.
 
