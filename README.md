@@ -10,7 +10,7 @@ Collaborators:
 # System Diagrams
 
 - [User-System Sequence Diagram](https://hackmd.io/@esten-rye/seis-635-tp1-skunk-sequence-diagram)
-- [Finite State Diagram](.img/fsd.jpg)
+- [Finite State Diagram](.img/fsd.png)
 
 # Contributor Workflow.
 
