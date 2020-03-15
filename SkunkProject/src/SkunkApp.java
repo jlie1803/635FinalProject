@@ -5,42 +5,31 @@ public class SkunkApp {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		StdOut.println("Welcome!");
-
-		/*
-		 * Dice dice = new Dice(); dice.roll();
-		 * 
-		 * 
-		 * StdOut.print(dice.toString());
-		 */
-
+		StdOut.println("Welcome to Skunk!");
 		// ask for player's name
 		StdOut.println();
 		StdOut.print("Enter player's name: ");
 		Scanner playerNameSc = new Scanner(System.in);
 		String playerName = playerNameSc.nextLine();
-		StdOut.println("\n" + "Player " + playerName + " starts to play:" + "\n"
-				+ "=======================================================");
-
+		StdOut.println("\n" + "=====================================" + "\n" + "Player " + playerName + " starts to play: " + "\n" + "=====================================");
+		
 		// ask to play y/n
 		StdOut.print("\n" + "Do you want to continue? ");
 		Scanner toContinueSc = new Scanner(System.in);
 		String toContinue = toContinueSc.nextLine();
-		while (toContinue.equalsIgnoreCase("Y")) {
-			// roll
-			/*
-			 * dice.roll; if (isSkunk) { StdOut.println("Sorry, your turn is over! ");
-			 * break; }
-			 */
-			
+		int totalTurnScore = 0;
+		while (toContinue.equalsIgnoreCase("Y")) 
+		{
 			Dice dice = new Dice();
 			dice.roll();
+			totalTurnScore = totalTurnScore + dice.getLastRoll();
 			//StdOut.print("\n" + dice.toString() + "\n");
 			
-			if (dice.hasSkunk())
+			if (dice.hasSkunk())   //needs to add what kind of skunk
 			{
 				StdOut.print("\n" + "You got skunked!" + "\n");
 				StdOut.print("\n" + dice.toString() + "\n");
+				
 				break;
 			}
 			
@@ -50,13 +39,16 @@ public class SkunkApp {
 				StdOut.print("\n" + "Do you want to continue? ");
 				toContinueSc = new Scanner(System.in); 
 				toContinue = toContinueSc.nextLine().toUpperCase();
+				StdOut.print("\n" + "Your current turn score is: "  + totalTurnScore + "\n");
 			}
+			
 			
 			 
 			// StdOut.print("continue");
 		}
-		// summary turnSummary
-		StdOut.println("\n" + "Change player, Your turn summary is: ");
+		// summary turnSummary	
+		StdOut.println("\n" + "========================================" + "\n" + "Change player, Your turn summary is: " + "\n" + "========================================");
+		StdOut.print("\n" + "Total turn score is: "  + totalTurnScore + "\n");
 
 	}
 
