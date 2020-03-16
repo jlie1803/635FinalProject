@@ -23,11 +23,10 @@ public class SkunkApp {
 			Dice dice = new Dice();
 			dice.roll();
 			totalTurnScore = totalTurnScore + dice.getLastRoll();
-			//StdOut.print("\n" + dice.toString() + "\n");
 			
 			if (dice.hasSkunk())   //needs to add what kind of skunk
 			{
-				StdOut.print("\n" + "You got skunked!" + "\n");
+				StdOut.print("\n" + "You got skunked: " + dice.getTypeofSkunk());
 				StdOut.print("\n" + dice.toString() + "\n");
 				
 				break;
@@ -36,17 +35,14 @@ public class SkunkApp {
 			else 
 			{
 				StdOut.print("\n" + dice.toString() + "\n");
+				StdOut.print("\n" + "Your current turn score is: "  + totalTurnScore + "\n");
 				StdOut.print("\n" + "Do you want to continue? ");
 				toContinueSc = new Scanner(System.in); 
-				toContinue = toContinueSc.nextLine().toUpperCase();
-				StdOut.print("\n" + "Your current turn score is: "  + totalTurnScore + "\n");
+				toContinue = toContinueSc.nextLine().toUpperCase();			
 			}
 			
-			
-			 
-			// StdOut.print("continue");
 		}
-		// summary turnSummary	
+		// print turnSummary	
 		StdOut.println("\n" + "========================================" + "\n" + "Change player, Your turn summary is: " + "\n" + "========================================");
 		StdOut.print("\n" + "Total turn score is: "  + totalTurnScore + "\n");
 

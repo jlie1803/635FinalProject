@@ -79,6 +79,26 @@ public class Dice
 		return (getDie1().getLastRoll()==1 && getDie2().getLastRoll() == 1);
 	}
 	
+	public String getTypeofSkunk()
+	{
+		if (onlyOneSkunk())
+		{
+			return "Single Skunk!";
+		}
+		else if (oneSkunkOneDeuce())
+		{
+			return "One Skunk One Deuce!";
+		}
+		else if (twoSkunks())
+		{
+			return "Two Skunks!";
+		}
+		else
+		{
+			return "";
+		}
+	}
+	
 	
 
 	public void roll()
