@@ -29,7 +29,9 @@ public class SkunkApp {
 			Dice dice = new Dice();
 			dice.roll();
 			totalTurnScore = totalTurnScore + dice.getLastRoll();
-			diceRoll.add(dice.getLastRoll());
+			diceRoll.add(dice.getDie1().getLastRoll());
+			diceRoll.add(dice.getDie2().getLastRoll());
+			
 			map.put(1, diceRoll);
 			
 			if (dice.hasSkunk())
