@@ -27,21 +27,21 @@ public class Turn1 {
 			turnScore= dice.getLastRoll() + this.getTurnScore(id);
 		}
 	
-		if (dice.onlyOneSkunk())
+		if (dice.oneSkunk())
 		{
 			this.turnScore = 0;
 			this.playerChip = player.getChip(id) - 1;
 			this.totalChip= kitty.getKitty() + 1;
 		}
 		
-		if (dice.oneSkunkOneDeuce())
+		if (dice.skunkDeuce())
 		{
 			this.turnScore = 0;
 			playerChip = player.getChip(id) - 2;
 			this.totalChip= kitty.getKitty() + 2;
 		}
 		
-		if (dice.twoSkunks())
+		if (dice.twoSkunk())
 		{
 			this.turnScore = 0;
 			playerChip = player.getChip(id) - 4;

@@ -63,43 +63,41 @@ public class Dice
 		return false;
 	}
 	
-	public boolean onlyOneSkunk()
+	public boolean oneSkunk()
 	{
 		return (getDie1().getLastRoll()==1 && getDie2().getLastRoll() != 1 || getDie1().getLastRoll()!=1 && getDie2().getLastRoll() == 1);
 		
 	}
 	
-	public boolean oneSkunkOneDeuce()
+	public boolean skunkDeuce()
 	{
 		return (getDie1().getLastRoll() * getDie2().getLastRoll() ==2);
 	}
 	
-	public boolean twoSkunks()
+	public boolean twoSkunk()
 	{
 		return (getDie1().getLastRoll()==1 && getDie2().getLastRoll() == 1);
 	}
 	
 	public String getTypeofSkunk()
 	{
-		if (onlyOneSkunk())
+		if (oneSkunk())
 		{
 			return "Single Skunk!";
 		}
-		else if (oneSkunkOneDeuce())
+		else if (skunkDeuce())
 		{
-			return "One Skunk One Deuce!";
+			return "Skunk Deuce!";
 		}
-		else if (twoSkunks())
+		else if (twoSkunk())
 		{
-			return "Two Skunks!";
+			return "Two Skunk!";
 		}
 		else
 		{
 			return "";
 		}
-	}
-	
-	
+	}	
 
 	public void roll()
 	{
@@ -120,7 +118,7 @@ public class Dice
 
 	public String toString()
 	{
-		return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
+		return "Value of each thrown die: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
 	}
 
 	// static methods can go anywhere - but at end is one convention

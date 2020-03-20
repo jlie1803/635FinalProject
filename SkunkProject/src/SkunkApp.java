@@ -61,6 +61,7 @@ public class SkunkApp {
 		//print each roll summary		
 		StdOut.print("Each dice roll score is: " + map + "\n");	
 		StdOut.print("\n" + "Your total turn score is: "  + totalTurnScore + "\n");
+		//how many chips lost
 	}
 }
 
