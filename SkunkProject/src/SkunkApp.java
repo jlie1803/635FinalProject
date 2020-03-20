@@ -23,16 +23,19 @@ public class SkunkApp {
 		String toContinue = toContinueSc.nextLine();
 		int totalTurnScore = 0;
 		Map<Integer, List<Integer>> map = new HashMap<>();
-		List<Integer> diceRoll= new ArrayList<>();
+		//List<Integer> diceRoll= new ArrayList<>();
+		int i=0;
 		while (toContinue.equalsIgnoreCase("Y")) 
 		{
 			Dice dice = new Dice();
 			dice.roll();
-			totalTurnScore = totalTurnScore + dice.getLastRoll();
+			totalTurnScore = totalTurnScore + dice.getLastRoll();	
+			List<Integer> diceRoll= new ArrayList<>();
 			diceRoll.add(dice.getDie1().getLastRoll());
 			diceRoll.add(dice.getDie2().getLastRoll());
 			
-			map.put(1, diceRoll);
+			map.put(i, diceRoll);
+			i++;
 			
 			if (dice.hasSkunk())
 			{
@@ -68,7 +71,7 @@ public class SkunkApp {
 		 * 		StdOut.print(integers[i]+ " "); 
 		 * }
 		 */	
-		StdOut.print(diceRoll);
+		//StdOut.println(diceRoll);
 	}
 }
 
