@@ -15,7 +15,7 @@ public class SkunkApp {
 		StdOut.print("Enter player's name: ");
 		Scanner playerNameSc = new Scanner(System.in);
 		String playerName = playerNameSc.nextLine();
-		StdOut.println("\n" + "=====================================" + "\n" + "Player " + playerName + " starts to play: " + "\n" + "=====================================");
+		StdOut.println("\n" + "=====================================" + "\n" + "Player " + playerName.substring(0,1).toUpperCase() + playerName.substring(1) + " starts to play: " + "\n" + "=====================================");
 		
 		// ask to play y/n
 		StdOut.print("\n" + "Do you want to continue? ");
@@ -23,11 +23,12 @@ public class SkunkApp {
 		String toContinue = toContinueSc.nextLine();
 		int totalTurnScore = 0;
 		Map<Integer, List<Integer>> map = new HashMap<>();
-		//List<Integer> diceRoll= new ArrayList<>();
+		//Map<String, List<Integer>> map = new HashMap<>(); //how to add explicit roll names in summary?
 		int i=0;
 		while (toContinue.equalsIgnoreCase("Y")) 
 		{
 			Dice dice = new Dice();
+			
 			dice.roll();
 			totalTurnScore = totalTurnScore + dice.getLastRoll();	
 			List<Integer> diceRoll= new ArrayList<>();
@@ -39,7 +40,7 @@ public class SkunkApp {
 			
 			if (dice.hasSkunk())
 			{
-				StdOut.print("\n" + "You got skunked: " + dice.getTypeofSkunk());
+				StdOut.print("\n" + "You got skunked: " + dice.getTypeofSkunk() + "\n");
 				StdOut.print("\n" + dice.toString() + "\n");
 				
 				break;
@@ -56,22 +57,10 @@ public class SkunkApp {
 			
 		}
 		// print turnSummary	
-		StdOut.println("\n" + "========================================" + "\n" + "Change player, Your turn summary is: " + "\n" + "========================================");
-		StdOut.print("\n" + "Total turn score is: "  + totalTurnScore + "\n");
+		StdOut.println("\n" + "========================================" + "\n" + "Change player, Your turn summary is: " + "\n" + "========================================" + "\n");	
 		//print each roll summary		
-		StdOut.print(map);
-		
-		
-		//ArrayList<Integer>[] integers = map.get(1);
-		//System.out.print(integers[0]);
-		/*
-		 * map.put(1, diceRoll); Integer[] integers = map.get(1); 
-		 * for (int i=0; i <= 2; i++) 
-		 * { 
-		 * 		StdOut.print(integers[i]+ " "); 
-		 * }
-		 */	
-		//StdOut.println(diceRoll);
+		StdOut.print("Each dice roll score is: " + map + "\n");	
+		StdOut.print("\n" + "Your total turn score is: "  + totalTurnScore + "\n");
 	}
 }
 
