@@ -1,5 +1,9 @@
 import edu.princeton.cs.introcs.*;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SkunkApp {
 
@@ -24,7 +28,7 @@ public class SkunkApp {
 			dice.roll();
 			totalTurnScore = totalTurnScore + dice.getLastRoll();
 			
-			if (dice.hasSkunk())   //needs to add what kind of skunk
+			if (dice.hasSkunk())
 			{
 				StdOut.print("\n" + "You got skunked: " + dice.getTypeofSkunk());
 				StdOut.print("\n" + dice.toString() + "\n");
@@ -45,7 +49,48 @@ public class SkunkApp {
 		// print turnSummary	
 		StdOut.println("\n" + "========================================" + "\n" + "Change player, Your turn summary is: " + "\n" + "========================================");
 		StdOut.print("\n" + "Total turn score is: "  + totalTurnScore + "\n");
-
+		//print each roll summary
+		Map<Integer, List<Integer>> map = new HashMap<>();
+		//Integer[] diceRoll = new Integer[]();
+		List<Integer> diceRoll= new ArrayList<>();
+		Dice dice1 = new Dice();
+		Dice dice2 = new Dice();
+		diceRoll.add(dice1.getLastRoll());
+		diceRoll.add(dice2.getLastRoll());
+		
+		map.put(1, diceRoll); 
+		
+		StdOut.print(map);
+		
+		
+		//ArrayList<Integer>[] integers = map.get(1);
+		//System.out.print(integers[0]);
+		/*
+		 * map.put(1, diceRoll); Integer[] integers = map.get(1); 
+		 * for (int i=0; i <= 2; i++) 
+		 * { 
+		 * 		StdOut.print(integers[i]+ " "); 
+		 * }
+		 */	
+		StdOut.print(diceRoll);
 	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
