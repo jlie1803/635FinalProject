@@ -22,11 +22,15 @@ public class SkunkApp {
 		Scanner toContinueSc = new Scanner(System.in);
 		String toContinue = toContinueSc.nextLine();
 		int totalTurnScore = 0;
+		Map<Integer, List<Integer>> map = new HashMap<>();
+		List<Integer> diceRoll= new ArrayList<>();
 		while (toContinue.equalsIgnoreCase("Y")) 
 		{
 			Dice dice = new Dice();
 			dice.roll();
 			totalTurnScore = totalTurnScore + dice.getLastRoll();
+			diceRoll.add(dice.getLastRoll());
+			map.put(1, diceRoll);
 			
 			if (dice.hasSkunk())
 			{
@@ -49,17 +53,7 @@ public class SkunkApp {
 		// print turnSummary	
 		StdOut.println("\n" + "========================================" + "\n" + "Change player, Your turn summary is: " + "\n" + "========================================");
 		StdOut.print("\n" + "Total turn score is: "  + totalTurnScore + "\n");
-		//print each roll summary
-		Map<Integer, List<Integer>> map = new HashMap<>();
-		//Integer[] diceRoll = new Integer[]();
-		List<Integer> diceRoll= new ArrayList<>();
-		Dice dice1 = new Dice();
-		Dice dice2 = new Dice();
-		diceRoll.add(dice1.getLastRoll());
-		diceRoll.add(dice2.getLastRoll());
-		
-		map.put(1, diceRoll); 
-		
+		//print each roll summary		
 		StdOut.print(map);
 		
 		
