@@ -78,9 +78,6 @@ class TestController {
 			assertEquals(12*(i+1), controller.getActivePlayerTurnScore());
 		}
 		controller.pass();
-		assertEquals("EndGameRound", controller.getState());
-		
-		controller.nextPlayer();
 		assertEquals("GameComplete", controller.getState());
 	}
 }
