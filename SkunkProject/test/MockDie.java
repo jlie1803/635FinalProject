@@ -1,5 +1,3 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class MockDie extends Die {
 
 	private int[] expectedRoll;

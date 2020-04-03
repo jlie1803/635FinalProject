@@ -1,9 +1,5 @@
 import edu.princeton.cs.introcs.*;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class SkunkApp {
 
@@ -12,8 +8,9 @@ public class SkunkApp {
 		// Current Controller State: InitializeGame
 
 		Scanner stdIn = new Scanner(System.in);
+
 		Controller controller = new Controller();
-		
+
 		while (controller.getState() != "GameComplete")
 		{
 			if (controller.getState() == "InitializeGame")
@@ -31,32 +28,41 @@ public class SkunkApp {
 			if (controller.getState() == "ActiveGame")
 			{
 				StdOut.println("\nGame begins...\n");
-				StdOut.println(controller.getRoundScoreBoard());
 				controller.startRound();
 			}
-			if (controller.getState() == "ActiveRound" || controller.getState() == "EndGameRound")
+			if (controller.getState() == "ActiveRound")
 			{
 				controller.nextPlayer();
 				StdOut.println(controller.getRoundScoreBoard());
+			}
+			if (controller.getState() == "ActiveTurn" || controller.getState() == "EndGameRound")
+			{
 				StdOut.println("\n#####################################");
 				StdOut.println(controller.getActivePlayerName() + "'s turn");
 				StdOut.println("#####################################");
-			}
-			if (controller.getState() == "ActiveTurn")
-			{
+				StdOut.println(controller.getActivePlayerName() + " Turn Score: " + controller.getActivePlayerTurnScore());
+
 				StdOut.println("\nRoll or Pass (r/p):");
 				String action = stdIn.nextLine();
-				if (action == "r") {
+				if (action.equalsIgnoreCase("R")) {
+					StdOut.println(controller.getActivePlayerName() +" decided to roll");
 					controller.roll();
 					StdOut.println(controller.getRollResult());
+					StdOut.println(controller.getActivePlayerName() + "'s Turn Score: " + controller.getActivePlayerTurnScore());
 				}
 				else
 				{
+					StdOut.println(controller.getActivePlayerName() +" decided to pass");
+					StdOut.println(controller.getActivePlayerName() + "'s Turn Score: " + controller.getActivePlayerTurnScore());
 					controller.pass();
-					
 				}
 			}
 		}
+
+		StdOut.println();
+		StdOut.println(controller.getRoundScoreBoard());
+
+		stdIn.close();
 
 		// StdOut.println("\nGame begings...\n");
 	

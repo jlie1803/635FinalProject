@@ -59,6 +59,6 @@ public class Player {
 		return "Player " + this.getPlayerName() + 
 				" has a Turn score of " + this.getTurnScore() + 
 				", Round score of " + this.getRoundScore() + ", and " 
-				+ this.getChip(this.getPlayerName()) + " chips.\n";
+				+ this.getChips() + " chips.\n";
 	}
 }

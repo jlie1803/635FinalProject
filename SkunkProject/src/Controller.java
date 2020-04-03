@@ -10,7 +10,6 @@ public class Controller {
 	private int goalPlayer;
 	private Dice dice;
 	private Turn turn;
-	private String skunkState;
 
 	public Controller()
 	{
@@ -23,7 +22,7 @@ public class Controller {
 		this.numberOfPlayers = 0;
 		this.playerList = new ArrayList<Player>();
 		this.activePlayer = -1;
-		this.goalPlayer = -1;
+		this.goalPlayer = -2;
 		this.dice = new Dice(die1, die2);
 	}
 	
@@ -98,6 +97,10 @@ public class Controller {
 			this.state = "EndGameRound";
 			this.goalPlayer = this.activePlayer;
 		}
+		else if (this.goalPlayer != -2)
+		{
+			this.state = "EndGameRound";
+		}
 		else {
 			this.state = "ActiveRound";
 		}
@@ -114,19 +117,14 @@ public class Controller {
 	public void nextPlayer() {
 		this.activePlayer += 1;
 		this.turn = new Turn(this.dice);
-		if (this.state == "EndGameRound" && this.activePlayer == this.goalPlayer)
+		if (this.state == "EndGameRound" && this.activePlayer == this.getNumberOfPlayers())
 		{
-			this.state = "GameComplete";
-			this.activePlayer = -1;
-		}
-		else if (this.state == "EndGameRound" && this.activePlayer == this.getNumberOfPlayers())
-		{
-			this.activePlayer = -1;
-			this.skunkState = "EndGameRound";
+			this.activePlayer = 0;
+			this.state = "EndGameRound";
 		}
 		else if (this.state == "ActiveRound" && this.activePlayer == this.getNumberOfPlayers())
 		{
-			this.state = "ActiveGame";
+			this.state = "ActiveRound";
 			this.activePlayer = -1;
 		}
 		else if (this.state == "ActiveRound")
@@ -134,7 +132,11 @@ public class Controller {
 			this.state = "ActiveTurn";
 		}
 		
-		
+		if (this.activePlayer == this.goalPlayer)
+		{
+			this.state = "GameComplete";
+			this.activePlayer = -1;
+		}
 	}
 	
 	public int getActivePlayerTurnScore() {
@@ -142,11 +144,11 @@ public class Controller {
 	}
 	
 	public String getRollResult() {
-		if (this.turn.hasSkunk()) {
-			return "You got skunked: " + this.turn.getTypeofSkunk() +
-					"\n\n" + turn.getRollString() + "\n";
-		}
-		
-		return "\n" + turn.getRollString() + "\n\nYour current turn score is: "  + turn.getScore() + "\n";
+		return this.turn.getRollString();
+	}
+
+	public String getPlayerSummary() {
+		if (this.getActivePlayer() == null) return "";
+		return this.getActivePlayerName().toString();
 	}
 }
