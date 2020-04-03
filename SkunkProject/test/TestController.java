@@ -63,7 +63,7 @@ class TestController {
 		controller.pass();
 		
 
-		assertEquals("ActiveGame", controller.getState());
+		assertEquals("ActiveRound", controller.getState());
 		assertEquals("Invalid", controller.getActivePlayerName());
 
 		controller.startRound();
