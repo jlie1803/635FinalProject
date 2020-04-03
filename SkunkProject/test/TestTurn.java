@@ -6,11 +6,12 @@ class TestTurn {
 
 	@Test
 	void turn_returns_score_of_zero_when_a_one_is_rolled() {
-		Die mockDie1 = new MockDie(new int[] {5, 3, 1});
-		Die mockDie2 = new MockDie(new int[] {4, 2, 9});
-		assertEquals(5, mockDie1.getLastRoll());
-		assertEquals(4, mockDie2.getLastRoll());
+		Die mockDie1 = new MockDie(new int[] {1, 5, 3, 1});
+		Die mockDie2 = new MockDie(new int[] {1, 4, 2, 9});
 		Turn turn = new Turn(new Dice(mockDie1, mockDie2));
+		turn.roll();
+		assertEquals(5, turn.getDie1());
+		assertEquals(4, turn.getDie2());
 		assertEquals(9, turn.getScore());
 		turn.roll();
 		assertEquals(14, turn.getScore());
@@ -20,11 +21,12 @@ class TestTurn {
 	
 	@Test
 	void when_a_one_is_rolled_subsequent_rolls_do_not_affect_the_score() {
-		Die mockDie1 = new MockDie(new int[] {5, 3, 1, 5});
-		Die mockDie2 = new MockDie(new int[] {4, 2, 9, 6});
-		assertEquals(5, mockDie1.getLastRoll());
-		assertEquals(4, mockDie2.getLastRoll());
+		Die mockDie1 = new MockDie(new int[] {1, 5, 3, 1, 5});
+		Die mockDie2 = new MockDie(new int[] {1, 4, 2, 9, 6});
 		Turn turn = new Turn(new Dice(mockDie1, mockDie2));
+		turn.roll();
+		assertEquals(5, turn.getDie1());
+		assertEquals(4, turn.getDie2());
 		assertEquals(9, turn.getScore());
 		turn.roll();
 		assertEquals(14, turn.getScore());
@@ -36,11 +38,12 @@ class TestTurn {
 	
 	@Test
 	void turn_returns_a_non_zero_score_when_a_one_is_not_rolled() {
-		Die mockDie1 = new MockDie(new int[] {5, 3, 7});
-		Die mockDie2 = new MockDie(new int[] {4, 2, 9});
-		assertEquals(5, mockDie1.getLastRoll());
-		assertEquals(4, mockDie2.getLastRoll());
+		Die mockDie1 = new MockDie(new int[] {1, 5, 3, 7});
+		Die mockDie2 = new MockDie(new int[] {1, 4, 2, 9});
 		Turn turn = new Turn(new Dice(mockDie1, mockDie2));
+		turn.roll();
+		assertEquals(5, turn.getDie1());
+		assertEquals(4, turn.getDie2());
 		assertEquals(9, turn.getScore());
 		turn.roll();
 		assertEquals(14, turn.getScore());

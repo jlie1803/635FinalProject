@@ -47,36 +47,35 @@ public class Dice
 		return this.lastRoll;
 	}
 	
-	public Die getDie1()
+	public int getDie1()
 	{
-		return this.die1;
+		return this.die1.getLastRoll();
 	}
 	
-	public Die getDie2()
+	public int getDie2()
 	{
-		return this.die2;
+		return this.die2.getLastRoll();
 	}
 	
 	public boolean hasSkunk() {
-		if (die1.getLastRoll() == 1) return true;
-		if (die2.getLastRoll() == 1) return true;
+		if (this.die1.getLastRoll() == 1) return true;
+		if (this.die2.getLastRoll() == 1) return true;
 		return false;
 	}
 	
 	public boolean oneSkunk()
 	{
-		return (getDie1().getLastRoll()==1 && getDie2().getLastRoll() != 1 || getDie1().getLastRoll()!=1 && getDie2().getLastRoll() == 1);
-		
+		return this.hasSkunk() && !this.twoSkunk() && !this.skunkDeuce();		
 	}
 	
 	public boolean skunkDeuce()
 	{
-		return (getDie1().getLastRoll() * getDie2().getLastRoll() ==2);
+		return (this.die1.getLastRoll() * this.die2.getLastRoll() ==2);
 	}
 	
 	public boolean twoSkunk()
 	{
-		return (getDie1().getLastRoll()==1 && getDie2().getLastRoll() == 1);
+		return (this.die1.getLastRoll()==1 && this.die2.getLastRoll() == 1);
 	}
 	
 	public String getTypeofSkunk()

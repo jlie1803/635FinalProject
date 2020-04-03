@@ -8,7 +8,7 @@ import java.util.Map;
 public class SkunkApp {
 
 	public static void main(String[] args) {
-		// ask how many players
+		// Initialize Players for the Game.
 		StdOut.print("Welcome to Skunk!\n\nHow many players to play? ");
 		//user enter how many players
 		Scanner numberofPlayerSc = new Scanner(System.in);
@@ -31,68 +31,73 @@ public class SkunkApp {
 		StdOut.println(formattedPlayerList);
 		StdOut.println("\nGame begings...\n");
 	
-		
+		// Game Logic Starts Here
 		int a=0;
+		ArrayList<Integer> turnScoreList= new ArrayList<Integer>();
+		int numPlayers = Integer.parseInt(numberofPlayer);
+
 		while (playerList.get(a).getRoundScore()<100)
 		{
 			int totalRoundScore=0;
-			for (int i=0; i<Integer.parseInt(numberofPlayer); i++)
+			for (int i=0; i<numPlayers; i++)
 			{
-				ArrayList turnScoreList = new ArrayList();
-				StdOut.println("\n=====================================\nPlayer " + 
+				Turn turn = new Turn();
+
+				//ArrayList<Integer> turnScoreList= new ArrayList<Integer>();
+				StdOut.println("\n#####################################\nPlayer " + 
 							playerList.get(i).getPlayerName().substring(0,1).toUpperCase() + 
 							playerList.get(i).getPlayerName().substring(1) + 
-							" starts to roll the dice: \n=====================================");
+							" starts to roll the dice: \n#####################################");
 			
 				// ask to play y/n	
 				StdOut.print("\n" + "Do you want to continue? ");
 				Scanner toContinueSc = new Scanner(System.in);
 				String toContinue = toContinueSc.nextLine();
+				
 				int totalTurnScore = 0;
 				Map<Integer, List<Integer>> map = new HashMap<>();
 				int j=0;
 				
 				while (toContinue.equalsIgnoreCase("Y")) 
 				{
-					Dice dice = new Dice();
+					turn.roll();
 					
-					dice.roll();
-					totalTurnScore = totalTurnScore + dice.getLastRoll();	
 					List<Integer> diceRoll= new ArrayList<>();
-					diceRoll.add(dice.getDie1().getLastRoll());
-					diceRoll.add(dice.getDie2().getLastRoll());
-					
+
+					diceRoll.add(turn.getDie1());
+					diceRoll.add(turn.getDie2());
+
 					map.put(j, diceRoll);
 					j++;
-					
-					if (dice.hasSkunk())
+					if (turn.hasSkunk())
 					{
-						StdOut.print("\n" + "You got skunked: " + dice.getTypeofSkunk() + "\n");
-						StdOut.print("\n" + dice.toString() + "\n");
-						totalTurnScore=0;
+						StdOut.print("\n" + "You got skunked: " + turn.getTypeofSkunk() + "\n");
+						StdOut.print("\n" + turn.getRollString() + "\n");
 						break;
 					}
 					else 
 					{
-						StdOut.print("\n" + dice.toString() + "\n");
-						StdOut.print("\n" + "Your current turn score is: "  + totalTurnScore + "\n");
+						StdOut.print("\n" + turn.getRollString() + "\n");
+						StdOut.print("\n" + "Your current turn score is: "  + turn.getScore() + "\n");
 						StdOut.print("\n" + "Do you want to continue? ");
 						toContinueSc = new Scanner(System.in); 
 						toContinue = toContinueSc.nextLine().toUpperCase();			
 					}
 				}
-				totalRoundScore= totalRoundScore + totalTurnScore;
-				turnScoreList.add(a, totalTurnScore);
-				playerList.get(a).setRoundScore(totalRoundScore);
+				
+				totalRoundScore += turn.getScore();
+				turnScoreList.add(turn.getScore());
+				playerList.get(i).setRoundScore(totalRoundScore);
 				
 				
-				StdOut.println("\n#####################################\n" + 
+				StdOut.println("\n=====================================\n" + 
 							"Change player, Your turn summary is: " + 
-							"\n#####################################\n");		
+							"\n=====================================");		
 				StdOut.print("\nEach dice roll score is: " + map + "\n");	
-				StdOut.print("\nYour total turn score is: "  + totalTurnScore + "\n");
+				StdOut.print("\nYour total turn score is: "  + turn.getScore() + "\n");
+				StdOut.print("\nYour round score list is " + turnScoreList + "\n");
 				StdOut.print("\nYour total round score is: "  + playerList.get(i).getRoundScore() + "\n");
-				StdOut.print(turnScoreList);
+				
 				
 				//how many chips lost and remaining
 			}

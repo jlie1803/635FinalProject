@@ -18,12 +18,6 @@ public class Player {
 		this.playerNamer= playerName;
 	}
 	
-	/*
-	 * public Player(String playerName, int turnScore, int roundScore, int
-	 * totalChip) //how to get score from Games and Turns { this.playerNamer=
-	 * playerName; this.turnScore= 0; this.roundScore= 0; this.totalChip= 50; }
-	 */
-	
 	public String getPlayerName()
 	{
 		return this.playerNamer;
