@@ -1,57 +1,62 @@
 
 public class Player {
 
-	private int id;
-	private int turnScore;
-	private int gameScore;
-	private int chip;
+
+	private int turnScore=0;
+	private int roundScore=0;
+	private int totalChip=50;
+	private String playerNamer;
 	
 	public Player()
 	{
 	
 	}
 	
-	public Player(int id)  //how to get score from Games and Turns
+	
+	public Player(String playerName)
 	{
-		this.id= id;
+		this.playerNamer= playerName;
 	}
 	
-	public Player(int id, int turnScore, int gameScore, int chip)  //how to get score from Games and Turns
+	/*
+	 * public Player(String playerName, int turnScore, int roundScore, int
+	 * totalChip) //how to get score from Games and Turns { this.playerNamer=
+	 * playerName; this.turnScore= 0; this.roundScore= 0; this.totalChip= 50; }
+	 */
+	
+	public String getPlayerName()
 	{
-		this.id= id;
-		this.turnScore= turnScore;
-		this.gameScore= gameScore;
-		this.chip= chip;
+		return this.playerNamer;
 	}
 	
-	public int getID()
+	public int getChip(String playerName)
 	{
-		return this.id;
-	}
-	
-	public int getChip(int id)
-	{
-		return this.chip;
+		return this.totalChip;
 	}
 	public int getTurnScore()
 	{
 		return this.turnScore;
 	}
 	
-	public int getGameScore()
+	public int getRoundScore()
 	{
-		return this.gameScore;
+		return this.roundScore;
+	}
+	public void setRoundScore(int roundScore)
+	{
+		this.roundScore=roundScore;
+	}
+	
+	public void setPlayerName(String playerName)
+	{
+		this.playerNamer=playerName;
 	}
 	
 	public String toString()
 	{
-		return "Player " + this.getID() + " has a Turn score of " + this.getTurnScore() + ", Game score of " + this.getGameScore() + ", and " 
-				+ this.getChip(this.getID()) + " chips.";
-	}
-	
-	public static void main(String[] args)
-	{ 
-		Player p1 = new Player(1, 0, 0, 50);
-		System.out.println(p1.toString());
+		return "Player " + this.getPlayerName() + 
+				" has a Turn score of " + this.getTurnScore() + 
+				", Round score of " + this.getRoundScore() + ", and " 
+				+ this.getChip(this.getPlayerName()) + " chips.\n";
 	}
 }
