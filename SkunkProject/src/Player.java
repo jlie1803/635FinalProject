@@ -23,7 +23,7 @@ public class Player {
 		return this.playerNamer;
 	}
 	
-	public int getChip(String playerName)
+	public int getChips()
 	{
 		return this.totalChip;
 	}
@@ -41,6 +41,14 @@ public class Player {
 		this.roundScore=roundScore;
 	}
 	
+	public void addTurnScore(int turnscore) {
+		this.roundScore += turnscore;
+	}
+
+	public void addTurnPenalty(int penalty) {
+		this.roundScore -= penalty;
+	}
+
 	public void setPlayerName(String playerName)
 	{
 		this.playerNamer=playerName;
