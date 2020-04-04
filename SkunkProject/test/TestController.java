@@ -39,6 +39,61 @@ class TestController {
 	}
 
 	@Test
+	public void test_two_player_round_skunk_first_turn() {
+		Die die1 = new MockDie(new int[]{6, 5, 1});
+		Die die2 = new MockDie(new int[]{6, 5, 6});
+
+		Controller controller = new Controller(die1, die2);
+		controller.setNumberOfPlayers(2);
+		controller.addPlayer("jie");
+		controller.addPlayer("esten");
+		controller.startRound();
+		controller.nextPlayer();
+		controller.roll();
+		controller.pass();
+		assertEquals(10, controller.getActivePlayerTurnScore());
+		assertEquals(10, controller.getActivePlayerGameScore());
+		controller.nextPlayer();
+		controller.roll();
+		assertEquals(0, controller.getActivePlayerTurnScore());
+		assertEquals(0, controller.getActivePlayerGameScore());
+	}
+
+	@Test
+	public void test_two_player_round_double_skunk_second_turn() {
+		Die die1 = new MockDie(new int[]{6, 5, 3, 5, 1});
+		Die die2 = new MockDie(new int[]{6, 5, 6, 5, 1});
+		
+		Controller controller = new Controller(die1, die2);
+		controller.setNumberOfPlayers(2);
+		controller.addPlayer("jie");
+		controller.addPlayer("esten");
+		controller.startRound();
+		controller.nextPlayer();
+		controller.roll();
+		controller.pass();
+		assertEquals(10, controller.getActivePlayerTurnScore());
+		assertEquals(10, controller.getActivePlayerGameScore());
+		controller.nextPlayer();
+		controller.roll();
+		controller.pass();
+		assertEquals(9, controller.getActivePlayerTurnScore());
+		assertEquals(9, controller.getActivePlayerGameScore());
+		controller.nextPlayer();
+
+		controller.startRound();
+		controller.nextPlayer();
+		controller.roll();
+		controller.pass();
+		assertEquals(10, controller.getActivePlayerTurnScore());
+		assertEquals(20, controller.getActivePlayerGameScore());
+		controller.nextPlayer();
+		controller.roll();
+		assertEquals(0, controller.getActivePlayerTurnScore());
+		assertEquals(0, controller.getActivePlayerGameScore());
+	}
+
+	@Test
 	public void test_single_player_round_logic_triggers_endgame() {
 		Die die1 = new MockDie(new int[]{6,6,6,6,6,6,6,6,6,6,6,6,6});
 		Die die2 = new MockDie(new int[]{6,6,6,6,6,6,6,6,6,6,6,6,6});
@@ -61,7 +116,7 @@ class TestController {
 			assertEquals(12*(i+1), controller.getActivePlayerTurnScore());
 		}
 		controller.pass();
-		
+		controller.nextPlayer();
 
 		assertEquals("ActiveRound", controller.getState());
 		assertEquals("Invalid", controller.getActivePlayerName());
@@ -78,6 +133,7 @@ class TestController {
 			assertEquals(12*(i+1), controller.getActivePlayerTurnScore());
 		}
 		controller.pass();
+		controller.nextPlayer();
 		assertEquals("GameComplete", controller.getState());
 	}
 }

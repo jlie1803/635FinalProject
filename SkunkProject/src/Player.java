@@ -46,7 +46,7 @@ public class Player {
 	}
 
 	public void addTurnPenalty(int penalty) {
-		this.roundScore -= penalty;
+		this.totalChip -= penalty;
 	}
 
 	public void setPlayerName(String playerName)

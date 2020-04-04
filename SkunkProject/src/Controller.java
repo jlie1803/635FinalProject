@@ -85,7 +85,6 @@ public class Controller {
 				this.getActivePlayer().setRoundScore(0);
 			}
 			this.state = "ActiveRound";
-			this.nextPlayer();
 			return;
 		}
 	}
@@ -104,8 +103,6 @@ public class Controller {
 		else {
 			this.state = "ActiveRound";
 		}
-
-		this.nextPlayer();
 	}
 
 	public String getActivePlayerName() {
@@ -141,6 +138,10 @@ public class Controller {
 	
 	public int getActivePlayerTurnScore() {
 		return this.turn.getScore();
+	}
+
+	public int getActivePlayerGameScore() {
+		return this.getActivePlayer().getRoundScore();
 	}
 	
 	public String getRollResult() {
