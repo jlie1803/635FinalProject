@@ -18,18 +18,12 @@ public class Player {
 		this.playerNamer= playerName;
 	}
 	
-	/*
-	 * public Player(String playerName, int turnScore, int roundScore, int
-	 * totalChip) //how to get score from Games and Turns { this.playerNamer=
-	 * playerName; this.turnScore= 0; this.roundScore= 0; this.totalChip= 50; }
-	 */
-	
 	public String getPlayerName()
 	{
 		return this.playerNamer;
 	}
 	
-	public int getChip(String playerName)
+	public int getChips()
 	{
 		return this.totalChip;
 	}
@@ -47,6 +41,14 @@ public class Player {
 		this.roundScore=roundScore;
 	}
 	
+	public void addTurnScore(int turnscore) {
+		this.roundScore += turnscore;
+	}
+
+	public void addTurnPenalty(int penalty) {
+		this.totalChip -= penalty;
+	}
+
 	public void setPlayerName(String playerName)
 	{
 		this.playerNamer=playerName;
@@ -57,6 +59,6 @@ public class Player {
 		return "Player " + this.getPlayerName() + 
 				" has a Turn score of " + this.getTurnScore() + 
 				", Round score of " + this.getRoundScore() + ", and " 
-				+ this.getChip(this.getPlayerName()) + " chips.\n";
+				+ this.getChips() + " chips.\n";
 	}
 }
