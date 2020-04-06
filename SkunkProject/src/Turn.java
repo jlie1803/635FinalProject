@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class Turn {
 
@@ -6,17 +8,20 @@ public class Turn {
 	private int penalty;
 	private boolean skunked;
 	private String skunkType;
-	
+	private List<DiceResult> rollHistory;
+
 	public Turn() {
 		this.dice = new Dice();
 		this.score = 0;
 		this.skunked = false;
+		this.rollHistory = new ArrayList<DiceResult>();
 	}
 	
 	public Turn(Dice dice) {
 		this.dice = dice;
 		this.score = 0;
 		this.skunked = false;
+		this.rollHistory = new ArrayList<DiceResult>();
 	}
 
 	public int getScore() {
@@ -36,6 +41,7 @@ public class Turn {
 		if (this.skunked) return;
 
 		this.dice.roll();
+		this.rollHistory.add(new DiceResult(this.dice));
 		if (this.dice.hasSkunk())
 		{
 			this.skunkType = this.dice.getTypeofSkunk();
@@ -81,6 +87,19 @@ public class Turn {
 			result += "\nPlease pay the kitty " + this.getPenalty() + "chip(s).";
 		}
 
+		return result;
+	}
+
+	public String getTurnSummary() {
+		String result = "In this turn you rolled the following rolls:\n";
+		for (int i=0; i<this.rollHistory.size(); i++) {
+			result += this.rollHistory.get(i);
+			if (i != this.rollHistory.size() - 1) {
+				result += ", ";
+			}
+		}
+		result += "\nYou lost " + this.penalty + " chip(s).";
+		result += "\nYou scored " + this.score + " point(s).";
 		return result;
 	}
 }

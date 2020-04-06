@@ -32,6 +32,10 @@ public class SkunkApp {
 			}
 			if (controller.getState() == "ActiveRound")
 			{
+				if (controller.getActivePlayerName() != "Invalid")
+				{
+					StdOut.println(controller.getActivePlayerTurnSummary());
+				}
 				controller.nextPlayer();
 				StdOut.println(controller.getRoundScoreBoard());
 			}

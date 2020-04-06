@@ -152,4 +152,8 @@ public class Controller {
 		if (this.getActivePlayer() == null) return "";
 		return this.getActivePlayerName().toString();
 	}
+
+	public String getActivePlayerTurnSummary() {
+		return this.turn.getTurnSummary();
+	}
 }
