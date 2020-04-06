@@ -103,6 +103,10 @@ public class Controller {
 		else {
 			this.state = "ActiveRound";
 		}
+
+		if (this.getActivePlayerGameScore() >= 100) {
+			this.nextPlayer();
+		}
 	}
 
 	public String getActivePlayerName() {

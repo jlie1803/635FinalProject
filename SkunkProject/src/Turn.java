@@ -84,7 +84,7 @@ public class Turn {
 		String result = dice.toString();
 		if (this.hasSkunk()) {
 			result += "\nYou rolled a " + this.getTypeofSkunk();
-			result += "\nPlease pay the kitty " + this.getPenalty() + "chip(s).";
+			result += "\nPlease pay the kitty " + this.getPenalty() + " chip(s).";
 		}
 
 		return result;
