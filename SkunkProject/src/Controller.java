@@ -93,7 +93,7 @@ public class Controller {
 		this.getActivePlayer().addTurnScore(this.turn.getScore());
 		if (this.getActivePlayer().getRoundScore() >= 100)
 		{
-			this.state = "EndGameRound";
+			this.state = "BeginEndGame";
 			this.goalPlayer = this.activePlayer;
 		}
 		else if (this.goalPlayer != -2)
@@ -104,9 +104,6 @@ public class Controller {
 			this.state = "ActiveRound";
 		}
 
-		if (this.getActivePlayerGameScore() >= 100) {
-			this.nextPlayer();
-		}
 	}
 
 	public String getActivePlayerName() {
@@ -118,6 +115,9 @@ public class Controller {
 	public void nextPlayer() {
 		this.activePlayer += 1;
 		this.turn = new Turn(this.dice);
+		if (this.state == "BeginEndGame") {
+			this.state = "EndGameRound";
+		}
 		if (this.state == "EndGameRound" && this.activePlayer == this.getNumberOfPlayers())
 		{
 			this.activePlayer = 0;

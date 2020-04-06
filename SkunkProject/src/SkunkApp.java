@@ -30,14 +30,17 @@ public class SkunkApp {
 				StdOut.println("\nGame begins...\n");
 				controller.startRound();
 			}
-			if (controller.getState() == "ActiveRound")
+			if (controller.getState() == "ActiveRound" || controller.getState() == "BeginEndGame")
 			{
 				if (controller.getActivePlayerName() != "Invalid")
 				{
 					StdOut.println(controller.getActivePlayerTurnSummary());
 				}
 				controller.nextPlayer();
-				StdOut.println(controller.getRoundScoreBoard());
+				StdOut.println();
+				if (controller.getState() != "ActiveRound") {
+					StdOut.println(controller.getRoundScoreBoard());
+				}
 			}
 			if (controller.getState() == "ActiveTurn" || controller.getState() == "EndGameRound")
 			{
@@ -62,9 +65,6 @@ public class SkunkApp {
 				}
 			}
 		}
-
-		StdOut.println();
-		StdOut.println(controller.getRoundScoreBoard());
 
 		stdIn.close();
 	}
