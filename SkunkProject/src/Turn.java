@@ -91,7 +91,7 @@ public class Turn {
 	}
 
 	public String getTurnSummary() {
-		String result = "In this turn you rolled the following rolls:\n";
+		String result = "In this round you rolled the following rolls:\n";
 		for (int i=0; i<this.rollHistory.size(); i++) {
 			result += this.rollHistory.get(i);
 			if (i != this.rollHistory.size() - 1) {

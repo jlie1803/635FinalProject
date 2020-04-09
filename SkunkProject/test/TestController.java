@@ -34,6 +34,7 @@ class TestController {
 		expectedScores += "----------------\n";
 		expectedScores += "jie:  Score: 0,  Chips: 50\n";
 		expectedScores += "esten:  Score: 0,  Chips: 50\n";
+		expectedScores += "\nTotal kitty now is: 0";
 		String actualScores = controller.getRoundScoreBoard();
 		assertEquals(expectedScores, actualScores);
 	}
