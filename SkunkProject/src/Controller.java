@@ -52,11 +52,14 @@ public class Controller {
 
 	public String getRoundScoreBoard() {
 		String result = "Player Scores:\n";
+		int kitty=0;
 		result += "----------------\n";
 		for (int i=0; i < this.playerList.size(); i++) {
 			Player p = this.playerList.get(i);
 			result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + p.getChips() + "\n";
+			kitty= kitty+ 50-p.getChips();
 		}
+		result += "\nTotal kitty now is: " + kitty;
 		return result;
 	}
 
