@@ -52,16 +52,30 @@ public class Controller {
 
 	public String getRoundScoreBoard() {
 		String result = "Player Scores:\n";
-		int kitty=0;
 		result += "----------------\n";
+		int kitty=0;
 		for (int i=0; i < this.playerList.size(); i++) {
 			Player p = this.playerList.get(i);
-			result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + p.getChips() + "\n";
-			kitty= kitty+ 50-p.getChips();
+			result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + p.getChips() + ", Kitty: " + p.getKitty() + "\n";
+			kitty+=p.getKitty();
 		}
-		result += "\nTotal kitty now is: " + kitty;
+		result+="Total kitty is " + kitty + ".\n";
+		if (this.state=="GameComplete")
+		{
+			result += "\nWe got a Winner!\n" + this.getGoalPlayerName() + "'s Game Score: " + this.playerList.get(this.goalPlayer).getRoundScore() + ", Game Chips: " + (this.playerList.get(this.goalPlayer).getChips()+kitty);
+					
+		}
 		return result;
 	}
+	
+	/*
+	 * public String getGameCompleteBoard() { String result = "Game Complete:\n";
+	 * result += "----------------\n"; result += "\nWe got a winner: " +
+	 * this.getGoalPlayerName() + "\n";
+	 * 
+	 * }
+	 */
+
 
 	public void startRound() {
 		this.state = "ActiveRound";
@@ -80,16 +94,17 @@ public class Controller {
 
 	public void roll() {
 		this.turn.roll();
-		
 		if (this.turn.hasSkunk()) {
 			int penalty = this.turn.getPenalty();
 			this.getActivePlayer().addTurnPenalty(penalty);
+			this.getActivePlayer().addKitty(penalty);
 			if (penalty == 4) {
 				this.getActivePlayer().setRoundScore(0);
 			}
 			this.state = "ActiveRound";
 			return;
 		}
+		
 	}
 
 	public void pass() {
@@ -98,6 +113,8 @@ public class Controller {
 		{
 			this.state = "BeginEndGame";
 			this.goalPlayer = this.activePlayer;
+			//this.getGoalPlayer().updateChip(50-);
+			
 		}
 		else if (this.goalPlayer != -2)
 		{
@@ -139,8 +156,19 @@ public class Controller {
 		if (this.activePlayer == this.goalPlayer)
 		{
 			this.state = "GameComplete";
+			
 			this.activePlayer = -1;
 		}
+	}
+	
+	public Player getGoalPlayer()
+	{
+		return this.playerList.get(this.goalPlayer);
+	}
+	
+	public String getGoalPlayerName()
+	{
+		return this.playerList.get(this.goalPlayer).getPlayerName();
 	}
 	
 	public int getActivePlayerTurnScore() {
@@ -163,4 +191,5 @@ public class Controller {
 	public String getActivePlayerTurnSummary() {
 		return this.turn.getTurnSummary();
 	}
+	
 }
