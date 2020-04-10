@@ -5,6 +5,7 @@ public class Player {
 	private int turnScore=0;
 	private int roundScore=0;
 	private int totalChip=50;
+	private int kitty=0;
 	private String playerNamer;
 	
 	public Player()
@@ -49,6 +50,19 @@ public class Player {
 		this.totalChip -= penalty;
 	}
 
+	public void addKitty(int penalty)
+	{
+		this.kitty+=penalty;
+	}
+	public int getKitty()
+	{
+		return this.kitty;
+	}
+	public void updateChip(int kitty)
+	{
+		this.totalChip+=kitty;
+	}
+	
 	public void setPlayerName(String playerName)
 	{
 		this.playerNamer=playerName;
