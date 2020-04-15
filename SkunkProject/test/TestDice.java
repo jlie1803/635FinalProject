@@ -1,5 +1,4 @@
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 class TestDice {
@@ -110,5 +109,19 @@ class TestDice {
 				assertEquals(i+j, mockDice.getLastRoll());
 			}
 		}			
+	}
+
+	@Test
+	public void toString_returns_expected_result()
+	{
+		Die mockDie1 = new MockDie(1);
+		Die mockDie2 = new MockDie(3);
+		Dice mockDice = new Dice(mockDie1, mockDie2);
+		
+		String expectedResult = "Value of each thrown die: 4 => " + "1" + " + " + "3";
+		
+		String result = mockDice.toString();
+		
+		assertEquals(expectedResult, result);		
 	}
 }

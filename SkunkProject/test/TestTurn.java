@@ -1,5 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
-
+import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;
 
 class TestTurn {
@@ -49,5 +49,75 @@ class TestTurn {
 		assertEquals(14, turn.getScore());
 		turn.roll();
 		assertEquals(30, turn.getScore());
+	}
+
+@Test
+	void getTypeofSkunk_returns_the_expected_result() {
+		Die mockDie1 = mock(MockDie.class);
+		Die mockDie2 = mock(MockDie.class);
+		
+		when(mockDie1.getLastRoll()).thenReturn(1);
+		when(mockDie2.getLastRoll()).thenReturn(1);
+		
+		Turn turn = new Turn(new Dice(mockDie1, mockDie2));
+		turn.roll();
+		
+		String result = turn.getTypeofSkunk();
+		
+		assertEquals("Two Skunk!", result);
+	}
+	
+	@Test
+	void turn_instantiates_successfully() {
+		int expectedScore = 0;
+		boolean expectedSkunked = false;
+		
+		Turn turn = new Turn();
+		
+		assertEquals(expectedScore, turn.getScore());
+		assertEquals(expectedSkunked, turn.hasSkunk());
+	}
+	
+	@Test
+	void getRollString_returns_the_expected_result() {
+		Die mockDie1 = mock(MockDie.class);
+		Die mockDie2 = mock(MockDie.class);
+		
+		when(mockDie1.getLastRoll()).thenReturn(1);
+		when(mockDie2.getLastRoll()).thenReturn(1);
+		
+		String expectedResult = 
+				"Value of each thrown die: 2 => 1 + 1\n" +
+				"You rolled a Two Skunk!\n" + 
+				"Please pay the kitty 4 chip(s).";
+		
+		Turn turn = new Turn(new Dice(mockDie1, mockDie2));
+		turn.roll();
+		
+		String result = turn.getRollString();
+		
+		assertEquals(expectedResult, result);
+	}
+	
+	@Test
+	void getTurnSummary_returns_the_expected_result() {
+		Die mockDie1 = mock(MockDie.class);
+		Die mockDie2 = mock(MockDie.class);
+		
+		when(mockDie1.getLastRoll()).thenReturn(1);
+		when(mockDie2.getLastRoll()).thenReturn(1);
+		
+		String expectedResult = 
+				"In this turn you rolled the following rolls:\n" +
+				"{1,1}\n" + 
+				"You lost 4 chip(s).\n" +
+				"You scored 0 point(s).";
+		
+		Turn turn = new Turn(new Dice(mockDie1, mockDie2));
+		turn.roll();
+		
+		String result = turn.getTurnSummary();
+		
+		assertEquals(expectedResult, result);
 	}
 }
