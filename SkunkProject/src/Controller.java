@@ -100,15 +100,6 @@ public class Controller {
 		}
 		return result;
 	}	
-	
-	/*
-	 * public String getGameCompleteBoard() { String result = "Game Complete:\n";
-	 * result += "----------------\n"; result += "\nWe got a winner: " +
-	 * this.getGoalPlayerName() + "\n";
-	 * 
-	 * }
-	 */
-
 
 	public void startRound() {
 		this.state = "ActiveRound";
