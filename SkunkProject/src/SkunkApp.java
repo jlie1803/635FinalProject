@@ -50,9 +50,7 @@ public class SkunkApp {
 				StdOut.println(controller.getActivePlayerName() + " Turn Score: " + controller.getActivePlayerTurnScore());
 
 				StdOut.println("\nRoll or Pass <Press Enter to Roll, P to Pass> ");
-				//StdOut.println("\nPress Enter to Roll:");
 				String action = stdIn.nextLine();
-				//stdIn.nextLine();
 				StdOut.println(controller.getActivePlayerName() +" decided to roll");
 				controller.roll();
 				StdOut.println(controller.getRollResult());

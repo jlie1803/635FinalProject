@@ -39,9 +39,11 @@ public class Controller {
 		return this.numberOfPlayers;
 	}
 
-	public int getPlayerCount() {
-		return this.playerList.size();
+	
+	public int getPlayerCount() { 
+		return this.playerList.size(); 
 	}
+	 
 
 	public void addPlayer(String playerName) {
 		this.playerList.add(new Player(playerName));
@@ -121,7 +123,6 @@ public class Controller {
 		if (this.turn.hasSkunk()) {
 			int penalty = this.turn.getPenalty();
 			this.getActivePlayer().addTurnPenalty(penalty);
-			this.getActivePlayer().addKitty(penalty);
 			if (penalty == 4) {
 				this.getActivePlayer().setRoundScore(0);
 			}
@@ -137,8 +138,6 @@ public class Controller {
 		{
 			this.state = "BeginEndGame";
 			this.goalPlayer = this.activePlayer;
-			//this.getGoalPlayer().updateChip(50-);
-			
 		}
 		else if (this.goalPlayer != -2)
 		{
@@ -195,14 +194,15 @@ public class Controller {
 		return this.playerList.get(this.goalPlayer).getPlayerName();
 	}
 	
-	public int getActivePlayerTurnScore() {
-		return this.turn.getScore();
-	}
-
-	public int getActivePlayerGameScore() {
-		return this.getActivePlayer().getRoundScore();
-	}
 	
+	public int getActivePlayerTurnScore() { 
+		return this.turn.getScore(); 
+	}
+	 
+	public int getActivePlayerGameScore() { 
+		return this.getActivePlayer().getRoundScore(); 
+	}
+	 
 	public String getRollResult() {
 		return this.turn.getRollString();
 	}
