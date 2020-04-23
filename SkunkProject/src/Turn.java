@@ -70,11 +70,6 @@ public class Turn {
 		kitty+=this.penalty;
 	}
 	
-	public int getKitty()
-	{
-		return this.kitty;
-	}
-
 	public boolean hasSkunk() {
 		return skunked;
 	}
