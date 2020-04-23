@@ -54,6 +54,7 @@ public class Controller {
 		String result = "Player Scores:\n";
 		result += "----------------\n";
 		int kitty=0;
+		int goalKitty=0;
 		for (int i=0; i < this.playerList.size(); i++) {
 			Player p = this.playerList.get(i);
 			result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + p.getChips() + "\n";
@@ -62,15 +63,37 @@ public class Controller {
 		result+="Total kitty is " + kitty + ".\n";
 		if (this.state=="GameComplete")
 		{
-			result += "\nWe got a Winner! < " + this.getGoalPlayerName() + " >\n";
+			result += "\nWe got a Winner! << " + this.getGoalPlayerName() + " >>\n";
 			result += "\nFinal Round Score Board:\n";
 			result += "----------------\n";
-			result += this.getGoalPlayerName() + ": Score: " + this.playerList.get(this.goalPlayer).getRoundScore() + ", Chips: " + (this.playerList.get(this.goalPlayer).getChips()+kitty+5*(this.playerList.size()-1) + "\n");
 			for (int i=0; i < this.playerList.size(); i++) {
 				Player p = this.playerList.get(i);
 				if (p.getPlayerName() != this.getGoalPlayerName())
 				{
-					result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + (p.getChips()-5) + "\n";
+					if (p.getRoundScore()==0)
+					{
+						goalKitty +=10;
+					}
+					else 
+					{
+						goalKitty+=5;
+					}
+				}
+			}
+			result += result += this.getGoalPlayerName() + ": Score: " + this.playerList.get(this.goalPlayer).getRoundScore() + ", Chips: " + (this.playerList.get(this.goalPlayer).getChips()+kitty+ goalKitty + "\n");
+			for (int i=0; i < this.playerList.size(); i++) {
+				Player p = this.playerList.get(i);
+				if (p.getPlayerName() != this.getGoalPlayerName())
+				{	
+					if (p.getRoundScore()==0)
+					{
+						result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + (p.getChips()-10) + "\n";
+					}
+					else
+					{
+						result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + (p.getChips()-5) + "\n";
+					}
+					
 				}
 			}
 			 
