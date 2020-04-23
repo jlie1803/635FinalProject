@@ -9,6 +9,7 @@ public class Turn {
 	private boolean skunked;
 	private String skunkType;
 	private List<DiceResult> rollHistory;
+	private int kitty;
 
 	public Turn() {
 		this.dice = new Dice();
@@ -66,6 +67,12 @@ public class Turn {
 		else {
 			this.penalty = 0;
 		}
+		kitty+=this.penalty;
+	}
+	
+	public int getKitty()
+	{
+		return this.kitty;
 	}
 
 	public boolean hasSkunk() {
@@ -98,8 +105,8 @@ public class Turn {
 				result += ", ";
 			}
 		}
-		result += "\nYou lost " + this.penalty + " chip(s).";
-		result += "\nYou scored " + this.score + " point(s).";
+		result += "\nYou lost " + this.penalty + " chip(s).\n";
+		result += "\nYou scored " + this.score + " point(s).\n";
 		return result;
 	}
 }
