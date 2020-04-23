@@ -62,11 +62,21 @@ public class Controller {
 		result+="Total kitty is " + kitty + ".\n";
 		if (this.state=="GameComplete")
 		{
-			result += "\nWe got a Winner!\n" + this.getGoalPlayerName() + "'s Game Score: " + this.playerList.get(this.goalPlayer).getRoundScore() + ", Game Chips: " + (this.playerList.get(this.goalPlayer).getChips()+kitty+5*(this.playerList.size()-1));
-					
+			result += "\nWe got a Winner! < " + this.getGoalPlayerName() + " >\n";
+			result += "\nFinal Round Score Board:\n";
+			result += "----------------\n";
+			result += this.getGoalPlayerName() + ": Score: " + this.playerList.get(this.goalPlayer).getRoundScore() + ", Chips: " + (this.playerList.get(this.goalPlayer).getChips()+kitty+5*(this.playerList.size()-1) + "\n");
+			for (int i=0; i < this.playerList.size(); i++) {
+				Player p = this.playerList.get(i);
+				if (p.getPlayerName() != this.getGoalPlayerName())
+				{
+					result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + (p.getChips()-5) + "\n";
+				}
+			}
+			 
 		}
 		return result;
-	}
+	}	
 	
 	/*
 	 * public String getGameCompleteBoard() { String result = "Game Complete:\n";
@@ -109,7 +119,7 @@ public class Controller {
 
 	public void pass() {
 		this.getActivePlayer().addTurnScore(this.turn.getScore());
-		if (this.getActivePlayer().getRoundScore() >= 20)
+		if (this.getActivePlayer().getRoundScore() >= 100)
 		{
 			this.state = "BeginEndGame";
 			this.goalPlayer = this.activePlayer;
