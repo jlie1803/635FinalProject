@@ -63,7 +63,7 @@ public class Controller {
 		result+="Total kitty is " + kitty + ".\n";
 		if (this.state=="GameComplete")
 		{
-			result += "\nWe got a Winner! << " + this.getGoalPlayerName() + " >>\n";
+			result += "\nWe got a Winner! <<< " + this.getGoalPlayerName() + " >>>\n";
 			result += "\nFinal Round Score Board:\n";
 			result += "----------------\n";
 			for (int i=0; i < this.playerList.size(); i++) {
