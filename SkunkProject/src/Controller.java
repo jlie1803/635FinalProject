@@ -62,7 +62,7 @@ public class Controller {
 		result+="Total kitty is " + kitty + ".\n";
 		if (this.state=="GameComplete")
 		{
-			result += "\nWe got a Winner!\n" + this.getGoalPlayerName() + "'s Game Score: " + this.playerList.get(this.goalPlayer).getRoundScore() + ", Game Chips: " + (this.playerList.get(this.goalPlayer).getChips()+kitty);
+			result += "\nWe got a Winner!\n" + this.getGoalPlayerName() + "'s Game Score: " + this.playerList.get(this.goalPlayer).getRoundScore() + ", Game Chips: " + (this.playerList.get(this.goalPlayer).getChips()+kitty+5*(this.playerList.size()-1));
 					
 		}
 		return result;
@@ -109,7 +109,7 @@ public class Controller {
 
 	public void pass() {
 		this.getActivePlayer().addTurnScore(this.turn.getScore());
-		if (this.getActivePlayer().getRoundScore() >= 100)
+		if (this.getActivePlayer().getRoundScore() >= 20)
 		{
 			this.state = "BeginEndGame";
 			this.goalPlayer = this.activePlayer;
