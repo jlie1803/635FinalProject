@@ -56,7 +56,7 @@ public class Controller {
 		int kitty=0;
 		for (int i=0; i < this.playerList.size(); i++) {
 			Player p = this.playerList.get(i);
-			result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + p.getChips() + ", Kitty: " + p.getKitty() + "\n";
+			result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + p.getChips() + "\n";
 			kitty+=p.getKitty();
 		}
 		result+="Total kitty is " + kitty + ".\n";
