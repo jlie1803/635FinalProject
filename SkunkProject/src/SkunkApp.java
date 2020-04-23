@@ -64,9 +64,6 @@ public class SkunkApp {
 				}
 			}
 		}
-		//StdOut.print("\nWe got a winner: " + controller.getGoalPlayerName() + "\n");
-		
-
 		stdIn.close();
 	}
 }
