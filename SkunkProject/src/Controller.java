@@ -134,7 +134,7 @@ public class Controller {
 
 	public void pass() {
 		this.getActivePlayer().addTurnScore(this.turn.getScore());
-		if (this.getActivePlayer().getRoundScore() >= 20)
+		if (this.getActivePlayer().getRoundScore() >= 100)
 		{
 			this.state = "BeginEndGame";
 			this.goalPlayer = this.activePlayer;
