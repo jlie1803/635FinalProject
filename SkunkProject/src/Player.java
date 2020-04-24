@@ -13,6 +13,7 @@ public class Player {
 	
 	}
 	
+	
 	public Player(String playerName)
 	{
 		this.playerNamer= playerName;
@@ -45,19 +46,28 @@ public class Player {
 		this.roundScore += turnscore;
 	}
 
-	
-	public void addTurnPenalty(int penalty) { 
+	public void addTurnPenalty(int penalty) {
 		this.totalChip -= penalty;
 	}
+
+	public void addKitty(int penalty)
+	{
+		this.kitty+=penalty;
+	}
+	public int getKitty()
+	{
+		return this.kitty;
+	}
+	public void updateChip(int kitty)
+	{
+		this.totalChip+=kitty;
+	}
 	
-	public int getKitty() { 
-		return this.kitty; 
+	public void setPlayerName(String playerName)
+	{
+		this.playerNamer=playerName;
 	}
-	 
-	public void setPlayerName(String playerName) { 
-		this.playerNamer=playerName; 
-	}
-	 
+	
 	public String toString()
 	{
 		return "Player " + this.getPlayerName() + 
