@@ -32,8 +32,8 @@ class TestController {
 		assertEquals(2, controller.getPlayerCount());
 		String expectedScores = "Player Scores:\n";
 		expectedScores += "----------------\n";
-		expectedScores += "jie:  Score: 0,  Chips: 50, Kitty: 0\n";
-		expectedScores += "esten:  Score: 0,  Chips: 50, Kitty: 0\n";
+		expectedScores += "jie:  Score: 0,  Chips: 50\n";
+		expectedScores += "esten:  Score: 0,  Chips: 50\n";
 		expectedScores += "Total kitty is 0.\n";
 		String actualScores = controller.getRoundScoreBoard();
 		assertEquals(expectedScores, actualScores);

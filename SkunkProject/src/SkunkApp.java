@@ -49,25 +49,19 @@ public class SkunkApp {
 				StdOut.println("#####################################");
 				StdOut.println(controller.getActivePlayerName() + " Turn Score: " + controller.getActivePlayerTurnScore());
 
-				StdOut.println("\nRoll or Pass (r/p):");
+				StdOut.println("\nRoll or Pass <Press Enter to Roll, P to Pass> ");
 				String action = stdIn.nextLine();
-				if (action.equalsIgnoreCase("R")) {
-					StdOut.println(controller.getActivePlayerName() +" decided to roll");
-					controller.roll();
-					StdOut.println(controller.getRollResult());
-					StdOut.println(controller.getActivePlayerName() + "'s Turn Score: " + controller.getActivePlayerTurnScore());
-				}
-				else
-				{
+				StdOut.println(controller.getActivePlayerName() +" decided to roll");
+				controller.roll();
+				StdOut.println(controller.getRollResult());
+				StdOut.println(controller.getActivePlayerName() + "'s Turn Score: " + controller.getActivePlayerTurnScore());
+				if (action.equalsIgnoreCase("P")) {
 					StdOut.println(controller.getActivePlayerName() +" decided to pass");
 					StdOut.println(controller.getActivePlayerName() + "'s Turn Score: " + controller.getActivePlayerTurnScore());
 					controller.pass();
 				}
 			}
 		}
-		//StdOut.print("\nWe got a winner: " + controller.getGoalPlayerName() + "\n");
-		
-
 		stdIn.close();
 	}
 }
