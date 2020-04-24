@@ -1,5 +1,4 @@
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 class TestDice {
@@ -38,36 +37,71 @@ class TestDice {
 			switch (dice.getLastRoll()) {
 			case 2:
 				two_count += 1;
+				assertEquals("Two Skunk!", dice.getTypeofSkunk());
 				break;
 			case 3:
 				three_count += 1;
+				assertEquals("Skunk Deuce!", dice.getTypeofSkunk());
 				break;
 			case 4:
 				four_count += 1;
+				if (dice.hasSkunk()) {
+					assertEquals("Single Skunk!", dice.getTypeofSkunk());
+				}
+				else
+				{
+					assertEquals("", dice.getTypeofSkunk());
+				}
 				break;
 			case 5:
 				five_count += 1;
+				if (dice.hasSkunk()) {
+					assertEquals("Single Skunk!", dice.getTypeofSkunk());
+				}
+				else
+				{
+					assertEquals("", dice.getTypeofSkunk());
+				}
 				break;
 			case 6:
 				six_count += 1;
+				if (dice.hasSkunk()) {
+					assertEquals("Single Skunk!", dice.getTypeofSkunk());
+				}
+				else
+				{
+					assertEquals("", dice.getTypeofSkunk());
+				}
 				break;
 			case 7:
 				seven_count += 1;
+				if (dice.hasSkunk()) {
+					assertEquals("Single Skunk!", dice.getTypeofSkunk());
+				}
+				else
+				{
+					assertEquals("", dice.getTypeofSkunk());
+				}
 				break;
 			case 8:
 				eight_count += 1;
+				assertEquals("", dice.getTypeofSkunk());
 				break;
 			case 9:
 				nine_count += 1;
+				assertEquals("", dice.getTypeofSkunk());
 				break;
 			case 10:
 				ten_count += 1;
+				assertEquals("", dice.getTypeofSkunk());
 				break;
 			case 11:
 				eleven_count += 1;
+				assertEquals("", dice.getTypeofSkunk());
 				break;
 			case 12:
 				twelve_count += 1;
+				assertEquals("", dice.getTypeofSkunk());
 				break;
 			}
 		}
@@ -110,5 +144,19 @@ class TestDice {
 				assertEquals(i+j, mockDice.getLastRoll());
 			}
 		}			
+	}
+
+	@Test
+	public void toString_returns_expected_result()
+	{
+		Die mockDie1 = new MockDie(1);
+		Die mockDie2 = new MockDie(3);
+		Dice mockDice = new Dice(mockDie1, mockDie2);
+		
+		String expectedResult = "Value of each thrown die: 4 => " + "1" + " + " + "3";
+		
+		String result = mockDice.toString();
+		
+		assertEquals(expectedResult, result);		
 	}
 }
