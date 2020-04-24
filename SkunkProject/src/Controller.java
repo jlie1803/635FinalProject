@@ -137,7 +137,6 @@ public class Controller {
 		{
 			this.state = "BeginEndGame";
 			this.goalPlayer = this.activePlayer;
-			//this.getGoalPlayer().updateChip(50-);
 			
 		}
 		else if (this.goalPlayer != -2)

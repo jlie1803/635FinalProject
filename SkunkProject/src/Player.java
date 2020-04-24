@@ -58,10 +58,6 @@ public class Player {
 	{
 		return this.kitty;
 	}
-	public void updateChip(int kitty)
-	{
-		this.totalChip+=kitty;
-	}
 	
 	public void setPlayerName(String playerName)
 	{

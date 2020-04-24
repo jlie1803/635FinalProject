@@ -30,6 +30,8 @@ class TestTurn {
 		assertEquals(9, turn.getScore());
 		turn.roll();
 		assertEquals(14, turn.getScore());
+		assertEquals("", turn.getTypeofSkunk());
+		
 		turn.roll();
 		assertEquals(0, turn.getScore());
 		turn.roll();
@@ -105,8 +107,8 @@ class TestTurn {
 		when(mockDie1.getLastRoll()).thenReturn(1);
 		when(mockDie2.getLastRoll()).thenReturn(1);
 
-		String expectedResult = "In this turn you rolled the following rolls:\n" + "{1,1}\n" + "You lost 4 chip(s).\n"
-				+ "You scored 0 point(s).";
+		String expectedResult = "In this turn you rolled the following rolls:\n" + "{1,1}\n" + "You lost 4 chip(s).\n\n"
+				+ "You scored 0 point(s).\n";
 
 		Turn turn = new Turn(new Dice(mockDie1, mockDie2));
 		turn.roll();
@@ -114,5 +116,26 @@ class TestTurn {
 		String result = turn.getTurnSummary();
 
 		assertEquals(expectedResult, result);
+	}
+	
+	@Test
+	void skunkdeuce_has_penalty_of_two() {
+		Die d1 = new MockDie(new int[] {5,5,1});
+		Die d2 = new MockDie(new int[] {5,5,2});
+		Dice dice = new Dice(d1, d2);
+		
+		Turn turn = new Turn (dice);
+		turn.roll();
+		turn.roll();
+		
+		assertEquals("Skunk Deuce!", turn.getTypeofSkunk());
+		assertEquals(2, turn.getPenalty());
+		assertEquals(2, turn.getKitty());
+		
+		String expectedResult = "In this turn you rolled the following rolls:\n" 
+		                      + "{5,5}, {1,2}\n" 
+				              + "You lost 2 chip(s).\n\n"
+		                      + "You scored 0 point(s).\n";
+		assertEquals(expectedResult, turn.getTurnSummary());
 	}
 }
