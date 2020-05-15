@@ -45,5 +45,13 @@ public class TestPlayer {
 		  assertEquals(-10, player.getChips());
 	  }
 	  
+	  @Test 
+	  public void test_set_chips() 
+	  { 
+		  Player player = new Player();
+		  player.setChips(10);
+		  assertEquals(10, player.getChips());
+	  }
+	  
 
 }
