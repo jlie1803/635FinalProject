@@ -74,6 +74,11 @@ public class Turn {
 	{
 		return this.kitty;
 	}
+	
+	public void setKitty(int kitty)
+	{
+		this.kitty=kitty;
+	}
 
 	public boolean hasSkunk() {
 		return skunked;
@@ -105,8 +110,8 @@ public class Turn {
 				result += ", ";
 			}
 		}
-		result += "\nYou lost " + this.penalty + " chip(s).\n";
-		result += "\nYou scored " + this.score + " point(s).\n";
+		result += "\nYou scored " + this.score + " point(s); ";
+		result += "You lost " + this.penalty + " chip(s).";
 		return result;
 	}
 }

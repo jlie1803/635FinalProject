@@ -107,8 +107,7 @@ class TestTurn {
 		when(mockDie1.getLastRoll()).thenReturn(1);
 		when(mockDie2.getLastRoll()).thenReturn(1);
 
-		String expectedResult = "In this turn you rolled the following rolls:\n" + "{1,1}\n" + "You lost 4 chip(s).\n\n"
-				+ "You scored 0 point(s).\n";
+		String expectedResult = "In this turn you rolled the following rolls:\n" + "{1,1}\n" + "You scored 0 point(s); You lost 4 chip(s).";
 
 		Turn turn = new Turn(new Dice(mockDie1, mockDie2));
 		turn.roll();
@@ -134,8 +133,7 @@ class TestTurn {
 		
 		String expectedResult = "In this turn you rolled the following rolls:\n" 
 		                      + "{5,5}, {1,2}\n" 
-				              + "You lost 2 chip(s).\n\n"
-		                      + "You scored 0 point(s).\n";
+		                      + "You scored 0 point(s); You lost 2 chip(s).";
 		assertEquals(expectedResult, turn.getTurnSummary());
 	}
 }
