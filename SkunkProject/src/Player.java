@@ -2,10 +2,10 @@
 public class Player {
 
 
-	private int turnScore=0;
-	private int roundScore=0;
-	private int totalChip=50;
-	private int kitty=0;
+	private int turnScore;
+	private int roundScore;
+	private int totalChip;
+	private int kitty;
 	private String playerNamer;
 	
 	public Player()
@@ -13,10 +13,13 @@ public class Player {
 	
 	}
 	
-	
 	public Player(String playerName)
 	{
-		this.playerNamer= playerName;
+		this.playerNamer = playerName.substring(0, 1).toUpperCase() + playerName.substring(1);
+		turnScore = 0;
+		roundScore = 0;
+		totalChip = 50;
+		kitty = 0;
 	}
 	
 	public String getPlayerName()
@@ -28,6 +31,12 @@ public class Player {
 	{
 		return this.totalChip;
 	}
+	
+	public void setChips(int chip)
+	{
+		this.totalChip=chip;
+	}
+	
 	public int getTurnScore()
 	{
 		return this.turnScore;
@@ -62,13 +71,5 @@ public class Player {
 	public void setPlayerName(String playerName)
 	{
 		this.playerNamer=playerName;
-	}
-	
-	public String toString()
-	{
-		return "Player " + this.getPlayerName() + 
-				" has a Turn score of " + this.getTurnScore() + 
-				", Round score of " + this.getRoundScore() + ", and " 
-				+ this.getChips() + " chips.\n";
 	}
 }

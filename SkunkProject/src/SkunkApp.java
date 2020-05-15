@@ -4,16 +4,15 @@ import java.util.Scanner;
 public class SkunkApp {
 
 	public static void main(String[] args) {
-		// Initialize Players for the Game.
-		// Current Controller State: InitializeGame
 
 		Scanner stdIn = new Scanner(System.in);
 
 		Controller controller = new Controller();
-
-		while (controller.getState() != "GameComplete")
+		
+		int gameNumber = 1;
+		while (controller.getState() != "TournamentComplete")
 		{
-			if (controller.getState() == "InitializeGame")
+			if (controller.getState() == "InitializeTournament")
 			{
 				StdOut.print("Welcome to Skunk!\n\nHow many players to play? ");
 				String numberOfPlayers = stdIn.nextLine();
@@ -21,48 +20,71 @@ public class SkunkApp {
 			}
 			if (controller.getState() == "AddPlayers")
 			{
-				StdOut.println("\nWhat's player " + (controller.getPlayerCount()+1) + " name: ");
+				StdOut.println("\nWhat's player " + (controller.getPlayerCount()+1) + "'s name: ");
 				String playerName = stdIn.nextLine();
 				controller.addPlayer(playerName);
 			}
-			if (controller.getState() == "ActiveGame")
+			if (controller.getState() == "ActiveTournament")
 			{
-				StdOut.println("\nGame begins...\n");
-				controller.startRound();
+				StdOut.println("\n\nTournament begins...\n");
+				controller.startGame();
+			} 
+			if (controller.getState() == "GameComplete")
+			{
+				StdOut.println("\nGame Over!");
+				StdOut.println("\n" + controller.getGameScoreBoard());
+				controller.nextGame();
 			}
-			if (controller.getState() == "ActiveRound" || controller.getState() == "BeginEndGame")
+			while (controller.getState() != "GameComplete" && controller.getState() != "AddPlayers")
 			{
-				if (controller.getActivePlayerName() != "Invalid")
+				if (controller.getState() == "ActiveGame")
 				{
-					StdOut.println(controller.getActivePlayerTurnSummary());
+					StdOut.println("\nGame " + (gameNumber-controller.getNumberOfPlayers()+1) + " begins...");
+					controller.startRound();
 				}
-				controller.nextPlayer();
-				StdOut.println();
-				if (controller.getState() != "ActiveRound") {
-					StdOut.println(controller.getRoundScoreBoard());
+				if (controller.getState() == "ActiveRound")
+				{
+					if (controller.getActivePlayerName() != "Invalid")
+					{
+						StdOut.println(controller.getActivePlayerTurnSummary());
+					}
+					controller.nextPlayer();
+					StdOut.println();
+					if (controller.getState() != "ActiveRound") {
+						StdOut.println("\n" + controller.getRoundScoreBoard());
+					}
 				}
-			}
-			if (controller.getState() == "ActiveTurn" || controller.getState() == "EndGameRound")
-			{
-				StdOut.println("\n#####################################");
-				StdOut.println(controller.getActivePlayerName() + "'s turn");
-				StdOut.println("#####################################");
-				StdOut.println(controller.getActivePlayerName() + " Turn Score: " + controller.getActivePlayerTurnScore());
+				if (controller.getState() == "ActiveTurn")
+				{
+					StdOut.println("\n#####################################");
+					StdOut.println(controller.getActivePlayerName() + "'s turn");
+					StdOut.println("#####################################");
+					StdOut.println(controller.getActivePlayerName() + " Turn Score: " + controller.getActivePlayerTurnScore());
 
-				StdOut.println("\nRoll or Pass <Press Enter to Roll, P to Pass> ");
-				//StdOut.println("\nPress Enter to Roll:");
-				String action = stdIn.nextLine();
-				//stdIn.nextLine();
-				StdOut.println(controller.getActivePlayerName() +" decided to roll");
-				controller.roll();
-				StdOut.println(controller.getRollResult());
-				StdOut.println(controller.getActivePlayerName() + "'s Turn Score: " + controller.getActivePlayerTurnScore());
-				if (action.equalsIgnoreCase("P")) {
-					StdOut.println(controller.getActivePlayerName() +" decided to pass");
-					StdOut.println(controller.getActivePlayerName() + "'s Turn Score: " + controller.getActivePlayerTurnScore());
-					controller.pass();
+					StdOut.println("\nRoll or Pass <Press Enter to Roll, P to Pass> ");
+					String action = stdIn.nextLine();
+					if (action.equalsIgnoreCase("P")) {
+						StdOut.println(controller.getActivePlayerName() + " decided to pass");
+						StdOut.println(controller.getActivePlayerName() + "'s Turn Score: " + controller.getActivePlayerTurnScore());
+						controller.pass();
+					}
+					else {
+						StdOut.println(controller.getActivePlayerName() + " decided to roll");
+						controller.roll();
+						if (controller.getState()=="TournamentComplete")
+						{
+							StdOut.println("\nTournament Over!\n");
+							StdOut.println(controller.getTournamentScoreBoard());
+						}
+						else
+						{
+							StdOut.println(controller.getRollResult());
+							StdOut.println(controller.getActivePlayerName() + "'s Turn Score: " + controller.getActivePlayerTurnScore() + "\n");
+						}	
+					}
 				}
-			}
+			} 
+			gameNumber++; 
 		}
 		stdIn.close();
 	}

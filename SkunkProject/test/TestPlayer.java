@@ -17,7 +17,7 @@ public class TestPlayer {
 	  public void test_player_chips() 
 	  { 
 		  Player player = new Player();
-		  assertEquals(50, player.getChips());
+		  assertEquals(0, player.getChips());
 	  }
 	  
 	  @Test 
@@ -42,16 +42,8 @@ public class TestPlayer {
 	  { 
 		  Player player = new Player();
 		  player.addTurnPenalty(10);
-		  assertEquals(40, player.getChips());
+		  assertEquals(-10, player.getChips());
 	  }
 	  
-	  @Test 
-	  public void test_player_toString() 
-	  { 
-		  Player player = new Player("jie");
-		  assertEquals("Player jie has a Turn score of 0, Round score of 0, and 50 chips.\n", player.toString());
-	  }
-	 
-	
 
 }
