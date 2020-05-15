@@ -1,11 +1,9 @@
-# seis635-tp1
-Team project one for SEIS 635
+# seis635-tp2.3
+Individual project one for SEIS 635
 
-Collaborators:
-
-- Esten Rye
+Collaborator(s):
 - Jie Li
-- Fadi BChara
+
 
 # System Diagrams
 
