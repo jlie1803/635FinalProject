@@ -33,7 +33,20 @@ public class SkunkApp {
 			{
 				StdOut.println("\nGame Over!");
 				StdOut.println("\n" + controller.getGameScoreBoard());
-				controller.nextGame();
+				StdOut.println("\nPlay Game " + (gameNumber-controller.getNumberOfPlayers()+1) + "?\nEnter for yes, P to pass");
+				String action = stdIn.nextLine();
+				if (action.equalsIgnoreCase("P"))
+				{
+					StdOut.println("Not want to play another game");
+					StdOut.println("Skunk Over!");
+					//show score board
+					break;
+				}
+				else
+				{
+					controller.nextGame();
+				}
+				
 			}
 			while (controller.getState() != "GameComplete" && controller.getState() != "AddPlayers")
 			{
@@ -46,13 +59,14 @@ public class SkunkApp {
 				{
 					if (controller.getActivePlayerName() != "Invalid")
 					{
+						//StdOut.println("\nWanna see Turn Summary?");
 						StdOut.println(controller.getActivePlayerTurnSummary());
 					}
 					controller.nextPlayer();
 					StdOut.println();
 					if (controller.getState() != "ActiveRound") {  
 						//ask if show round score board
-						StdOut.println("\nDo you wanna see current Round Score Board?\nPress Enter for yes, P for pass");
+						StdOut.println("\nShow current Round Score Board? <Enter or P>");
 						String action = stdIn.nextLine();
 						if (action.equalsIgnoreCase("P"))
 						{
