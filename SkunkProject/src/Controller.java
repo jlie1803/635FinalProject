@@ -171,7 +171,7 @@ public class Controller{
 	public void roll() {
 		this.turn.roll();
 
-		if (this.getActivePlayer().getChips()<=45)
+		if (this.getActivePlayer().getChips()<=20)
 		{
 			//this.state="GameComplete";
 			this.state="TournamentComplete";

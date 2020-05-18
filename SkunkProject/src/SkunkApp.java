@@ -50,13 +50,26 @@ public class SkunkApp {
 					}
 					controller.nextPlayer();
 					StdOut.println();
-					if (controller.getState() != "ActiveRound") {
-						StdOut.println("\n" + controller.getRoundScoreBoard());
+					if (controller.getState() != "ActiveRound") {  
+						//ask if show round score board
+						StdOut.println("\nDo you wanna see current Round Score Board?\nPress Enter for yes, P for pass");
+						String action = stdIn.nextLine();
+						if (action.equalsIgnoreCase("P"))
+						{
+							StdOut.println("\nNew Player:");
+						}
+						else
+						{
+							StdOut.println("\n" + controller.getRoundScoreBoard());
+							StdOut.println("New Player:");
+						}
+						
 					}
 				}
+				
 				if (controller.getState() == "ActiveTurn")
 				{
-					StdOut.println("\n#####################################");
+					StdOut.println("#####################################");
 					StdOut.println(controller.getActivePlayerName() + "'s turn");
 					StdOut.println("#####################################");
 					StdOut.println(controller.getActivePlayerName() + " Turn Score: " + controller.getActivePlayerTurnScore());
