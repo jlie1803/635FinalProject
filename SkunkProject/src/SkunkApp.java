@@ -59,16 +59,22 @@ public class SkunkApp {
 				{
 					if (controller.getActivePlayerName() != "Invalid")
 					{
-						//StdOut.println("\nWanna see Turn Summary?");
-						StdOut.println(controller.getActivePlayerTurnSummary());
-					}
-					controller.nextPlayer();
-					StdOut.println();
-					if (controller.getState() != "ActiveRound") {  
-						//ask if show round score board
-						StdOut.println("\nShow current Round Score Board? <Enter or P>");
+						StdOut.println("\nShow Turn Summary? <Enter or P>");
 						String action = stdIn.nextLine();
-						if (action.equalsIgnoreCase("P"))
+						if (action.equalsIgnoreCase("P")) {
+							
+						}
+						else
+						{
+							StdOut.println(controller.getActivePlayerTurnSummary());
+						}
+					}
+						controller.nextPlayer();
+						StdOut.println();
+					if (controller.getState() != "ActiveRound") {  
+						StdOut.println("\nShow current Round Score Board? <Enter or P>");
+						String action1 = stdIn.nextLine();
+						if (action1.equalsIgnoreCase("P"))
 						{
 							StdOut.println("\nNew Player:");
 						}
@@ -77,10 +83,8 @@ public class SkunkApp {
 							StdOut.println("\n" + controller.getRoundScoreBoard());
 							StdOut.println("New Player:");
 						}
-						
-					}
+					}	
 				}
-				
 				if (controller.getState() == "ActiveTurn")
 				{
 					StdOut.println("#####################################");
@@ -88,7 +92,7 @@ public class SkunkApp {
 					StdOut.println("#####################################");
 					StdOut.println(controller.getActivePlayerName() + " Turn Score: " + controller.getActivePlayerTurnScore());
 
-					StdOut.println("\nRoll or Pass <Press Enter to Roll, P to Pass> ");
+					StdOut.println("\nRoll or Pass <Enter or P> ");
 					String action = stdIn.nextLine();
 					if (action.equalsIgnoreCase("P")) {
 						StdOut.println(controller.getActivePlayerName() + " decided to pass");
