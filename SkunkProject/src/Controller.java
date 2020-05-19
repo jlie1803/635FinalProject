@@ -61,8 +61,8 @@ public class Controller{
 			Player p = this.playerList.get(i);
 			p.setRoundScore(0);
 			p.setChips(p.getChips());
-			this.turn.setKitty(0);
 		}
+		this.turn.setKitty(0);
 		this.activePlayer = -1;
 		this.goalPlayer = -2;
 	}
@@ -100,6 +100,7 @@ public class Controller{
 			StdOut.println(this.getRoundScoreBoard());
 			this.state = "GameComplete";
 			this.activePlayer = -1;
+			this.turn.setKitty(0);
 		}
 	}
 
@@ -163,8 +164,9 @@ public class Controller{
 			result += p.getPlayerName() + ":  Score: " + p.getRoundScore() + ",  Chips: " + p.getChips() + "\n";
 			kitty+=p.getKitty();
 		}
-		result+="Total kitty is " + kitty + ".\n";
 		this.turn.setKitty(kitty);
+		result+="Total kitty is " + kitty + ".\n";
+		
 		return result;
 	}	
 
