@@ -173,7 +173,7 @@ public class Controller{
 	public void roll() {
 		this.turn.roll();
 
-		if (this.getActivePlayer().getChips()<=20)
+		if (this.getActivePlayer().getChips()<=0)
 		{
 			//this.state="GameComplete";
 			this.state="TournamentComplete";
@@ -192,7 +192,7 @@ public class Controller{
 
 	public void pass() {
 		this.getActivePlayer().addTurnScore(this.turn.getScore());
-		if (this.getActivePlayer().getRoundScore() >= 20)
+		if (this.getActivePlayer().getRoundScore() >= 100)
 		{
 			StdOut.println(this.getRoundScoreBoard());
 			this.state = "GameComplete";
