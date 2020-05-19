@@ -104,12 +104,12 @@ public class Controller{
 		}
 	}
 
-	public String getTournamentScoreBoard()
-	{
-		String result = "Tournament Score Board:\n";
-		result += "----------------\n";
-		return result;
-	}
+//	public String getTournamentScoreBoard()
+//	{
+//		String result = "Tournament Score Board:\n";
+//		result += "----------------\n";
+//		return result;
+//	}
 	
 	public String getGameScoreBoard()
 	{

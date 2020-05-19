@@ -123,7 +123,7 @@ public class SkunkApp {
 						if (controller.getState()=="TournamentComplete")
 						{
 							StdOut.println("\nTournament Over!\n");
-							StdOut.println(controller.getTournamentScoreBoard());
+							//StdOut.println(controller.getTournamentScoreBoard());
 						}
 						else
 						{
