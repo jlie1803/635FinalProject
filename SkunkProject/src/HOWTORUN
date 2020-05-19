@@ -1,9 +1,12 @@
 In Package Explorer, find src folder. Inside src folder, find SkunkApp class which has the main method and should be run by right clicking Run As Java application. 
-HowToPlay:
-Tournament ends when any player chip is not more than zero
+-HowToPlay:
+Tournament ends when game ends and player not want to play another game or when any player chip is not more than zero
 Game ends when any player score is not less than 100
 Turn ends when player is skunked or pass
 Round ends when the turn of the last player in the playlist ends
+Before each game and round starts, game and round number is shown
+Player can choose to display TurnSummary, RoundScoreBoard and GameScoreBoard
+
 
 In Package Explorer, find test folder. Right click on the folder and choose Run As JUnit Test.
 To see test coverage, right click test folder and choose Coverage As JUnit Test.
